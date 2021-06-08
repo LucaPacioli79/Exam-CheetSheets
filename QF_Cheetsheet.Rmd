@@ -1,0 +1,486 @@
+---
+title: 'Quantitative Finance'
+output:
+  pdf_document:
+    template: template-alt.tex
+  html_document:
+    df_print: paged
+---
+
+# Probability theory overview
+
+## Cumulative distribution function (cdf)
+
+Every real-valued random variable $X$ can be described by its cumulative distribution function $(c d f) F_{X}: \mathbb{R} \rightarrow[0,1]$ defined as
+$$
+F_{X}(x)=\mathbb{P}[X \leq x]
+$$
+Notice that, as mentioned above, $\{X \leq x\}=X^{-1}((-\infty, x]) \in \mathcal{F}$.
+
+### Discrete random variable \
+
+We call var. discrete, if its image (pmf) is **finite** or **countably finite**.
+
+### Continuos random variables \
+
+We call radom var continuos if its cdf is contunous. It implies the image of X (pdf) is "uncountably infite".
+
+## Quantile functions and quantiles \
+
+Quantile is **generalized inverse of the cdf $F_x$ of X, defined as:
+$$
+Q_{X}(p)=\inf \left\{x \in \mathbb{R} \mid p \leq F_{X}(x)\right\}
+$$
+
+For some probability level $\alpha\epsilon(0,1)$, the $\alpha-quantile$ is just the value $Q_x(\alpha)$
+
+## Expected Value \
+
+or expectation, mean, average, first moment- characterises the tendency or long-run average value
+
+
+### For absolutely continuous
+
+$$
+\mathbb{E}[X]=\int_{-\infty}^{\infty} x f_{X}(x) d x
+$$
+
+### For discrete
+
+$$
+\mathbb{E}[X]=\sum_{k=1}^{\infty} x_{k} \mathrm{P}\left[X=x_{k}\right]=\sum_{k=1}^{\infty} x_{k} p_{k}
+$$
+
+### Main take-home
+
+Example. Let $X \sim \mathcal{U}(a, b)$, (uniformly distributed) then the expected value of $X$ is
+$$
+\begin{aligned}
+\mathbb{E}[X] &=\int_{-\infty}^{\infty} x f_{X}(x) \mathrm{d} x=\int_{a}^{b} \frac{x}{b-a} \mathrm{~d} x=\left.\frac{x^{2}}{2(b-a)}\right|_{x=a} ^{b} \\
+&=\frac{b^{2}-a^{2}}{2(b-a)}=\frac{a+b}{2}
+\end{aligned}
+$$
+$$ 
+\mathbb{E}[X] = \frac{a+b}{2}
+$$
+
+
+## Variance and SD
+
+- variance: distance to the mean, expecteation of the squared devation from its mean
+- standard devation: sqare root of variance
+
+$$
+\operatorname{Var}(X)=\mathbb{V}[X]=\mathbb{E}\left[(X-\mathbb{E}[X])^{2}\right]
+$$
+$$
+\operatorname{Var}(X)=\frac{(b-a)^2}{12}
+$$
+
+## Covariance \
+
+expected value of the product of their SD. 
+
+$$
+\operatorname{cov}(X, Y)=\sigma_{X Y}=\sigma(X, Y)=\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+$$
+$$
+\operatorname{cov}(X, Y)= \mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]
+$$
+
+## Pearson's correlation \
+
+Measure of linear correlation betwewen two RV.
+
+$$
+\rho_{X, Y}=\frac{\operatorname{cov}(X, Y)}{\sqrt{\mathbb{V}[X]} \sqrt{\mathbb{V}[Y]}}=\frac{\sigma_{X, Y}}{\sigma_{X} \sigma_{Y}}
+$$
+
+! **If two vars are independent, they are also uncorrelated, the opposite must not be true.**
+
+$$
+\mathrm{V}[X+Y] =\mathbb{V}[X]+\mathbb{V}[Y]+2 \operatorname{cov}(X, Y)
+$$
+Note that variance of a sum is sum of variance only if vars are uncorrelated.
+
+## Skewness \
+
+Measure of the assymetry of the distribution around its mean. Third standardized moment.
+
+$$
+\gamma_{1}(X)=\mathbb{E}\left[\left(\frac{X-\mathbb{E}[X]}{\sqrt{\mathrm{V}[X]}}\right)^{3}\right]=\mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
+$$
+
+## Kurtosis \
+
+Measure of the width of its tails. Fourth standadized moment. Kurtosis = 3 is average, above (below) is excess kurtosis.
+
+$$
+\operatorname{Kurt}[X]=\gamma_{2}(X)=\kappa(X)=\mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{4}\right]
+$$
+
+## Independence
+
+We say two elements $A$ and $B$ of a $\sigma$ -algebra are independent and we write $A \perp B$ if
+$$
+\mathbb{P}[A \cap B]=\mathbb{P}[A] \mathbb{P}[B]
+$$
+To see why we call this property independence, we recall the definition of the conditional probability and use 'independence',
+$$
+\mathbb{P}[A \mid B]=\frac{\mathbb{P}[A \cap B]}{\mathbb{P}[B]}=\frac{\mathbb{P}[A] \mathbb{P}[B]}{\mathbb{P}[B]}=\mathbb{P}[A]
+$$
+So the probability of $A$ stays the same independent of the occurrence of
+$B$. The same is true the other way around
+$$
+\mathbb{P}[B \mid A]=\frac{\mathbb{P}[B \cap A]}{\mathbb{P}[A]}=\mathbb{P}[B]
+$$
+
+## Normal distribution
+
+### probability density function \
+
+$$
+f_{X}(x)=\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp \left(-\frac{(x-\mu)^{2}}{2 \sigma^{2}}\right) .
+$$
+
+### density function , cdf\
+$$
+\varphi(x)=\frac{1}{\sqrt{2 \pi}} \exp \left(-\frac{x^{2}}{2}\right)
+$$
+
+
+
+### Combined 
+
+$$
+f_{X}(x)=\frac{1}{\sigma} \varphi\left(\frac{x-\mu}{\sigma}\right)
+$$
+
+## Log-normal distribution
+
+$$
+\begin{aligned}
+&\text { We say } X \text { is log-normally distributed and write } X \sim \log \mathcal{N}\left(\mu, \sigma^{2}\right) \text { if }\\
+&Y=\log (X) \sim \mathcal{N}\left(\mu, \sigma^{2}\right)
+\end{aligned}
+$$
+$$
+f(x)=\frac{1}{x \sqrt{2 \pi \sigma^{2}}} \exp \left[-\frac{(\log x-\mu)^{2}}{2 \sigma^{2}}\right]
+$$
+
+## t-distribution
+
+Like normal but with heavier tails.
+
+### cdf
+
+$$
+t_{\nu}(x)=\int_{-\infty}^{x} \frac{\Gamma\left(\frac{\nu+1}{2}\right) \nu^{\frac{\nu}{2}}}{\sqrt{\pi} \Gamma\left(\frac{\nu}{2}\right)}\left(\nu+t^{2}\right)^{-\frac{\nu+1}{2}} \mathrm{~d} t
+$$
+Where $\nu$ denotes the degrees of freedom.
+
+
+# Bonds
+
+## Present value
+
+$$
+PV(y)=\frac{C_{T}}{(1+y)^{T}}
+$$
+
+Notes:
+
+- market value of zero-coupon bonds decreases with longer maturities
+- keeping T fixed, the market value of the zero-coupon bond decreases as the yield increases
+
+Semi-annual compounding (e.g. used in the U.S. Treasury bond market): interest rate $y_{s}$ is derived from:
+$$
+P\left(y_{s}\right)=\frac{C_{T}}{\left(1+\frac{y_{s}}{2}\right)^{2 T}}
+$$
+Continuous compounding (used ubiquitously in the quantitative finance literature) interest rate $y_{c}$ is derived from:
+$$
+P\left(y_{c}\right)=\frac{C_{T}}{\exp \left(y_{c} T\right)}=e^{-y_{c} T} C_{T}
+$$
+$yield = \frac{\frac{CT}{P(y)}}{T}$
+
+$$
+P(y)=\frac{c F}{y}\left(1-\frac{1}{(1+y)^{T}}\right)+\frac{F}{(1+y)^{T}}
+$$
+Price of a perpetual bond/consol:
+$P(y)=\frac{c}{y}F$
+
+## Taylor series
+
+$$
+\begin{aligned}
+T_{f, x_{0}}(x) &=\sum_{n=0}^{\infty} \frac{f^{(n)}\left(x_{0}\right)}{n !}\left(x-x_{0}\right)^{n} \\
+&=f\left(x_{0}\right)+f^{\prime}\left(x_{0}\right)\left(x-x_{0}\right)+\frac{f^{\prime \prime}\left(x_{0}\right)}{2}\left(x-x_{0}\right)^{2}+\ldots
+\end{aligned}
+$$
+$$
+\sum_{n=0}^{2} \frac{f^{(n)}\left(x_{0}\right)}{n !}\left(x-x_{0}\right)^{n}=f\left(x_{0}\right)+f^{\prime}\left(x_{0}\right)\left(x-x_{0}\right)+\frac{f^{\prime \prime}\left(x_{0}\right)}{2}\left(x-x_{0}\right)^{2}
+$$
+a Taylor polynomial of degree two and so on.
+
+## Duation  
+
+$\triangleright$ The Dollar-Duration $(D D)$ is the negative of the first derivative
+$$
+D D(y)=-P^{\prime}(y)
+$$
+$\triangleright$ The Modified Duration $\left(D^{*}\right)$ is a normalized version of the Dollar-Duration:
+$$
+D^{*}(y)=\frac{D D(y)}{P(y)}=-\frac{P^{\prime}(y)}{P(y)}
+$$
+$\triangleright$ The Macaulay Duration $\left(D_{M}\right)$, yet another normalized version:
+$$
+D_{M}(y)=(1+y) D^{*}(y)=-(1+y) \frac{P^{\prime}(y)}{P(y)}
+$$
+
+Duration is average cash-flow during maturity, or average time at which cash is received. Measures sensitivity to change in yields.
+
+## Convexity
+
+Improved approximation of bond price sensitivity given by duration. Taylor series up to the second derivative. Hence: 
+$\triangleright$ Again, we take the second derivative of each term in the sum separately. We get for all $t \in\{1, \ldots, T\}$,
+$$
+\frac{\mathrm{d}^{2}}{\mathrm{~d} y^{2}}\left(\frac{C_{t}}{(1+y)^{t}}\right)=\frac{\mathrm{d}}{\mathrm{d} y}\left(-\frac{t C_{t}}{(1+y)^{t+1}}\right)=\frac{t(t+1) C_{t}}{(1+y)^{t+2}}
+$$
+$\unrhd$ Hence, the second derivative of the bond price is given by
+$$
+\begin{aligned}
+P^{\prime \prime}(y) &=\frac{\mathrm{d}^{2} P}{\mathrm{~d} y^{2}}(y)=\sum_{t=1}^{T} \frac{t(t+1) C_{t}}{(1+y)^{t+2}}=\frac{1}{(1+y)^{2}} \sum_{t=1}^{T} \frac{t(t+1) C_{t}}{(1+y)^{t}} \\
+&=\frac{1}{(1+y)^{2}}\left(\frac{2 C_{1}}{1+y}+\frac{6 C_{2}}{(1+y)^{2}}+\ldots+\frac{T(T+1) C_{n}}{(1+y)^{T}}\right) .
+\end{aligned}
+$$
+
+$\unrhd$ Dollar convexity $(D C)$ is defined as the second derivative of the bond price with respect to the yield, that means we set
+$$
+D C(y)=\frac{\mathrm{d}^{2} P}{\mathrm{~d} y^{2}}(y)=P^{\prime \prime}(y)
+$$
+$\$ Bond convexity $(\kappa)$ is defined to be the second derivative of the bond price with respect to the yield, divided by the bond price, that is
+$$
+\kappa(y)=\frac{D C(y)}{P(y)}=\frac{P^{\prime \prime}(y)}{P(y)}
+$$
+Note that some practitioners refer to convexity as the second derivative divided by the present value and additionally multiplied by the factor $\frac{1}{2}$
+
+### Conclusions:
+
+- for small movements, duration (linear approx.) is reasonably good.
+- dollar duration measures the negative slope of the tanget to the price-yield curve at the point $y_0$
+- duration is the **average time to wait for each payment weighted by their present values**
+
+# Econometrics (volatility)
+
+
+- vol alludes to the fact that asset price, thus the return, is **random**
+- vol is a measure of uncertainty of the stock returns
+- typical vol of stocks is between 20-50%
+- matters for rebalancing positions
+
+## Stylized facts
+
+- returns of stocks exhibit **heteroscedasticity and positive autocorrelation**
+- volatility clusters - large (small) vol is followed by also large(small) vol, of either sign
+- autocorrelations are not large and decrease more or less slowly with the lag order
+
+## Intro
+
+Unbiased estimator of the variance
+
+$$
+\widehat{v}=\frac{1}{n-1} \sum_{i=1}^{n}\left(u_{i}-\bar{u}\right)^{2}
+$$
+
+The annualized volatility $\widehat{\sigma}$, under the assumption of Gaussianity, can be estimated as
+$$
+\widehat{\sigma}=\frac{\sqrt{v}}{\sqrt{\tau}}
+$$
+ $SE= \frac{\widehat{\sigma}}{\sqrt{2 n}}$.
+
+
+## ARCH(m)
+
+- captures dependence in the form of positive autocorrelations in the square residuals
+- estimate of the variance is based on LT average variance and m observations. The older it is, less weight it's given.
+
+### Creation
+
+$$
+\sigma_{n}^{2}=\sum_{i=1}^{m} \alpha u_{n-i}^{2}
+$$
+$\triangleright$ The coefficient $\alpha_{i}>0$ is the weight given to the observation $i$ days ago. **Alpha serves to give higher weights to more recent observations** \
+
+Extension is the assumption there is a long-run variance rate and that it should be given some weight.
+
+$$
+\sigma_{n}^{2}=\gamma V_{L}+\sum_{i=1}^{m} \alpha_{i} u_{n-i}^{2}
+$$
+where $V_{L}$ is the long-run variance rate and $\gamma$ is the weight assigned to $V_{L}$. Often, $\omega=\gamma V_L$.
+Because the weights must sum to unity, we have
+$$
+\gamma+\sum_{i=1}^{m} \alpha_{i}=1 .
+$$
+
+### EWMA Model
+
+- designed to track changes in the volatility
+
+Weights $\alpha_i$ **decrease exponentially** as we move back through time.
+
+$$
+\alpha_{i+1}=\lambda \alpha_{i}, \text { where } \lambda \in[0,1]
+$$
+It turns out that this weighting scheme leads to a particularly simple formula for updating volatility estimates:
+$$
+\sigma_{n}^{2}=\lambda \sigma_{n-1}^{2}+(1-\lambda) u_{n-1}^{2}
+$$
+
+$$
+\sigma_{n}^{2}=(1-\lambda) \sum_{i=1}^{m} \lambda^{i-1} u_{n-i}^{2}+\lambda^{m} \sigma_{n-m}^{2}
+$$
+
+Lambda is empirically at 0.94.
+
+### GARCH (1,1)
+
+- vol. clustering often generates more extreme values and less central values compared to case when returns are independent, i.e. $\alpha=\beta=0$
+- incorporates mean-reversion, whereas EWMA does not
+
+The conditional variance $\sigma_{t}^{2}$ is calculated from a long-run average variance rate $V_{L}$, the past variance $\sigma_{t-1}^{2}$, and the past return $u_{t-1}$ :
+$$
+\sigma_{t}^{2}=\underbrace{\gamma \cdot V_{L}}_{\omega}+\beta \cdot \sigma_{t-1}^{2}+\alpha \cdot u_{t-1}^{2}, \quad 
+$$
+
+Where:
+
+- conditional variance $\sigma_{t-1}^{2}$ is calculated from the LT average $V_L$, past return $u_{t-1}$
+- 1 = $\gamma+\beta+\alpha$
+
+# Copulas
+
+Correlation measures only **linear dependency**- copulas solve this problem.
+
+### Definition
+Copulas are functions that separate the **marginal distributions** from the **dependency structure** of a multivar distribution \
+
+Copulas express dependence on a **quantile scale**- useful for dependence of **extreme outcomes**. They facilite **bottom-up approach**- that is better because we often understand marginal behavior of individual risk factors than the aggregate, whole dependence structure.
+
+### Definition 2
+
+Coupula is a function with 2 vars and has 3 properties:
+
+- groundedness
+- margins
+- increasing
+
+## Grounded functions
+
+### Definition. 
+
+We say a function $H: X \times Y \rightarrow \mathbb{R}$ is grounded if
+$$
+H\left(x, m_{Y}\right)=H\left(m_{X}, y\right)=0 \text { for all }(x, y) \in X \times Y
+$$
+Example. Let $H:[-1,1] \times[0, \infty] \rightarrow \mathbb{R}$ be defined by
+$$
+H(x, y)=\frac{(x+1)\left(e^{y}-1\right)}{x+2 e^{y}-1}
+$$
+Then $H$ is grounded, since $H(x, 0)=H(-1, y)=0$ for all $x \in[-1,1]$ and $y \in[0, \infty]$.
+
+## Margins
+
+Suppose now that $M_{X}=\max X$ and $M_{Y}=\max Y$ exist.
+
+### Definition. 
+
+The margins of a function $H: X \times Y \rightarrow \mathbb{R}$ are the functions
+$$
+\begin{array}{l}
+F: X \rightarrow \mathbb{R} \text { defined by } F(x)=H\left(x, M_{Y}\right) \text { and } \\
+G: Y \rightarrow \mathbb{R} \text { defined by } G(y)=H\left(M_{X}, y\right)
+\end{array}
+$$
+
+## 2-increasing functions
+
+### Definition. 
+
+Let $A=\left[x_{1}, x_{2}\right] \times\left[y_{1}, y_{2}\right] \subset X \times Y$. The $H$ -volume of the rectangle $A$ is defined as
+$$
+V_{H}(A)=H\left(x_{2}, y_{2}\right)-H\left(x_{2}, y_{1}\right)-H\left(x_{1}, y_{2}\right)+H\left(x_{1}, y_{1}\right) .
+$$
+We abbreviate this as
+$$
+V_{H}(A)=\Delta_{y_{1}}^{y_{2}} \Delta_{x_{1}}^{x_{2}} H(x, y)
+$$
+for the first order differences of $H$ on $A$.
+$\Delta_{x_{1}}^{x_{2}} H(x, y)=H\left(x_{2}, y\right)-H\left(x_{1}, y\right)$ and $\Delta_{y_{1}}^{y_{2}} H(x, y)=H\left(x, y_{2}\right)-H\left(x, y_{1}\right) .$
+We call a function $H: X \times Y \rightarrow \mathbb{R}$ 2-increasing 1 if $V_{H}(A) \geq 0$ for all rectangles $A \subset X \times Y$
+
+## Summary of copulas with properties
+
+Definition. A function $C:[0,1]^{2} \rightarrow[0,1]$ is called a copula (or more precisely, a two-dimensional copula, or a 2-copula) if
+1. $C$ is grounded, that means $C(u, 0)=C(0, v)=0$,
+2. Its margins are the identity, that means for every $u, v \in[0,1]$
+$$
+C(u, 1)=u \text { and } C(1, v)=v
+$$
+3. $C$ is 2 -increasing, that means for every $u_{1}, u_{2}, v_{1}, v_{2} \in[0,1]$ with $u_{1} \leq u_{2}, v_{1} \leq v_{2}$ we have
+$$
+C\left(u_{2}, v_{2}\right)-C\left(u_{2}, v_{1}\right)-C\left(u_{1}, v_{2}\right)+C\left(u_{1}, v_{1}\right) \geq 0
+$$
+
+## Types of copulas
+
+Example. The fundamental examples are:
+$\triangleright$ Product or independence copula: $\Pi(u, v)=u v$,
+$\triangleright$ Lower Fréchet-Hoeffding bound: $W(u, v)=\max (u+v-1,0)$,
+$\triangleright$ Upper Fréchet-Hoeffding bound: $M(u, v)=\min (u, v)$.
+
+## Sklar's theorem
+
+Theorem. (Sklar's theorem)
+1. Let $H$ be a joint distribution function with margins $F$ and $G$. Then there exists a copula $C$ such that for all $x, y \in \overline{\mathbb{R}}$
+$$
+H(x, y)=C(F(x), G(y))
+$$
+If $F$ and $G$ are continuous, then $C$ is unique. Otherwise, $C$ is uniquely determined on $\operatorname{Ran} F \times \operatorname{Ran} G$, where $\operatorname{Ran} F$ denotes the range of $F$.
+2. Conversely, if $C$ is a copula and $F$ and $G$ are distribution functions, then the function $H$, given in Equation (1), defines a joint distribution function with margins $F$ and $G$.
+
+**THEN THE ASSOCIATED COPULA IS:**
+
+$$
+C(u, v)=\frac{u v}{u+v-u v}
+$$
+## Examples of copulas
+
+- fundamental couplas: independent copula, upper and lower bounds
+- implicit copulas: extracted from known cdf's F via Sklar's theorem. Cannot write C=..... directly.
+- explicit copulas: can write C=... directly, but their use is very limited and they are quite unnecessary.
+
+### Parametric copulas
+We can divide parametric couplas into *implicit* and *explicit* ones.
+Sklar's theorem states that we can always find a copula in a parametric distribution function.
+Let $H$ be the distribution function and let $F_{1}, F_{2}$ its continuous margins.
+Then the implied copula is
+$$
+C\left(u_{1}, u_{2}\right)=H\left(F_{1}^{(-1)}\left(u_{1}\right), F_{2}^{(-1)}\left(u_{2}\right)\right)
+$$
+Such a copula may not have a simple closed form.
+
+
+### Financial interpretation
+
+$\triangleright$ Consider 2 daily returns $X=\left(X_{1}, X_{2}\right)$ with pairwise correlations all equal to $\rho=0.5 .$ \
+
+However, we are unsure about the best joint model.
+
+$D$ If the copula of $X$ is $C_{\rho=0.5}^{\text {Gauss}}$ , the probability that on a given day both returns lie below their $\alpha=0.01$ quantiles is (this is a coupla)
+$$
+\mathbb{P}\left[X_{1} \leq F_{1}^{-1}(\alpha), X_{2} \leq F_{2}^{-1}(\alpha)\right]=\mathbb{P}\left[U_{1} \leq \alpha, U_{2} \leq \alpha\right] \approx 1.29 \times 10^{-3}
+$$
+In the long run such an event will happen approximately once every 775 trading days $(\approx$ once every 3 years \
+
+$\triangleright$ If the copula of $X$ is $C_{\nu=4, \rho=0.5}^{t}$ (student distribution) however, such an event will happen approximately $2.22$ times more often, i.e. $\approx$ once every $1.3$ years.!!!!!
+

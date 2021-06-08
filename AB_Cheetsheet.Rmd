@@ -1,0 +1,57 @@
+---
+title: 'Advanced Banking'
+output:
+  pdf_document:
+    template: template-alt.tex
+  html_document:
+    df_print: paged
+---
+
+# Introduction
+
+Firms can get financing:
+-directly by issuing secutiries
+-indirectly by getting loans from intermediares (banks)
+
+### Definition
+
+Financial Intermediary (FI) is an economic agent who specializes in **buying and selling financial claims**
+
+## uniqeuness of banks
+
+A bank is an institution whose current operations consist in granting loans and receiving depositios from individuals and business. \
+
+Banks transfer assets to most productive use and contribute to GDP growth by:
+- reducing information asymmetry
+- improving capital allocations
+
+Banks exist because of:
+
+- liquidity insurance
+- delegated monitors
+
+# Liquidity provision
+
+Banks loans cannot be sold quickly because of assymetries (lemons problem). \
+
+Banks boost economy, because they provide liquidity on demand, By that, long-term investment projects can take place, because of the pooled capital, which would otherwise lock the capital for individuals, which would be averse to invest it, should they need it quickly.
+
+At $t=0$ consumers choose investment level $I \in[0,1]$ that maximizes ex-ante expected utility
+Ex-ante expected utility is given by the following:
+$$
+E(u)=\pi u\left(C_{1}\right)+(1-\pi) \rho u\left(C_{2}\right)
+$$
+where $\rho \leq 1$ is the discount rate and $\pi$ is the probability of being impatient.
+
+$$
+\text { The efficient line: }\left(C_{1}, C_{2}\right) \text { such that } \pi C_{1}+(1-\pi) \frac{C_{2}}{R}=1
+$$
+## Optimal allocation
+
+The optimal allocation $\left(C_{1}^{*}, C_{2}^{*}\right)$ satisfies the following condition
+$$
+R \rho=\underbrace{\frac{u^{\prime}\left(C_{1}^{*}\right)}{u^{\prime}\left(C_{2}^{*}\right)}}_{\text {marginal rate of substitution }}
+$$
+
+
+

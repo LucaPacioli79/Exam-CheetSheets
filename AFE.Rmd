@@ -1,0 +1,101 @@
+---
+title: 'Advanced Financial Economics'
+output:
+  pdf_document:
+    template: template-alt.tex
+  html_document:
+    df_print: paged
+---
+
+<!--
+# Some Simple Examples
+
+## One-line equation
+
+Euler's constant: $e = \mathop {\lim }\limits_{n \to \infty } \left( {1 + \frac{1}{n}} \right)^n$
+
+## Multi-line equation
+
+This renders as a "pop-up" in Rstudio if you've selected "Inline" with the "Show equation and image previews" option at Tools > Global Options... > Rmarkdown
+
+$$
+\begin{array}{lcl}
+I &=& \int (x + 1) dx \\
+&=& \frac{x^2}{2} + x + C.
+\end{array}
+$$
+
+## Comments with `\iffalse` (and closing `\fi`)
+
+You shouldn't see anything in the output PDF here (although there is an equation in the Rmarkdown document).
+
+\iffalse
+Integration by parts: $\int {u\frac{{dv}}{{dx}}} dx = uv - \int {\frac{{du}}{{dx}}} vdx$
+\fi
+
+# A "Big" Test of Equations
+
+**Source:** [Griffith Quantum Mechanics Time Dependent Perturbation theory CheatSheet (UCB 137B final) on www.overleaf.com](https://www.overleaf.com/articles/griffith-quantum-mechanics-time-dependent-perturbation-theory-cheatsheet-ucb-137b-final/jwynrzctvqgp)
+-->
+
+
+# 1. Intro
+
+## FOC
+
+\begin{equation}
+\begin{array}{c}
+\max _{\left(c_{1}, c_{2}\right) \geq 0, s} u\left(c_{1}, c_{2}\right) \text { s.t. } c_{2}=e_{2}+\left(e_{1}-c_{1}\right)(1+r) \\
+\frac{\partial u\left(c_{1}, c_{2}\right)}{\partial c_{1}}-\lambda(1+r)=0 \\
+\frac{\partial u\left(c_{1}, c_{2}\right)}{\partial c_{2}}-\lambda=0
+\end{array}
+\end{equation}
+
+## Useful assumptions on utility
+
+\begin{equation}
+u\left(c_{1}, c_{2}\right)=v\left(c_{1}\right)+\beta v\left(c_{2}\right)
+\end{equation}
+
+
+### Examples
+\begin{equation}
+\begin{aligned}
+&\text { CARA: } \quad v(c)=-\exp (-c)\\
+&\text { CRRA: } \quad v(c)=\frac{c^{1-\sigma}}{1-\sigma} \quad \square \neq 1\\
+&\log : \quad v(c)=\log (c)
+\end{aligned}
+\end{equation}
+
+## Inter-temporal equilibrium model
+
+- *H* households and two periods, *t=1,2*
+- **single, perishable good** and *no production*
+- each household has some utility over consumption and exogenous endowments. They can write debt-contracts, i.e. they can borrow and save at a market prices (1+r)
+
+Market clearing $\Rightarrow$ borrowing = saving
+
+## Competitive equilibrium - implicit assumptions
+
+- price taking
+- market-clearing
+- rationality (Super strong assumption)
+- rational expectations (super strong assumption)
+
+### Some formal results
+
+In equilibrium we must have that for each agent $\mathrm{h}$
+$$
+(1+r) \beta=\frac{v_{h}^{\prime}\left(c_{1}^{h}\right)}{v_{h}^{\prime}\left(c_{2}^{h}\right)}
+$$
+Since $\mathrm{v}(.)$ is strictly concave this implies
+$$
+c_{2}^{1}>c_{1}^{1} \Rightarrow c_{2}^{h}>c_{1}^{h} \forall h
+$$
+if one agent consumes more than the other, then all agents must consume more
+Market clearing gives the results
+
+### Main take-away from this:
+
+We can get rid of individual consumption, be left with aggregate consumption only and read off asset prices from that
+

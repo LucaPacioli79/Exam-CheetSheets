@@ -1,0 +1,352 @@
+---
+title: 'Advanced Corporate Finance 2'
+output:
+  pdf_document:
+    template: template-alt.tex
+  html_document:
+    df_print: paged
+---
+
+
+
+# Bonds
+
+## Price
+
+$$
+P=\frac{(1-p) \times 10}{1+r_{D}}+\frac{(1-p)^{2} \times 10}{\left(1+r_{D}\right)^{2}}+\frac{(1-p)^{3} \times 110}{\left(1+r_{D}\right)^{3}}
+$$
+**Where $\mathrm{p}$ is the annual probability of default and $r_{D}$ is the required return on the bond.**
+
+$$r_{D}=r_{f}+\beta_{0}\left(r_{m}-r_{f}\right)$$
+
+In case $p=5 \%, r_{f}=10 \%, \beta_{D}=0.2$ and $r_{m}-r_{f}=7.5 \%,$ we obtain **$r_{0}=11.5 \%$ and $P=83.81$**
+
+
+
+### Discount
+
+
+
+Serves to compensate investors for bearing risk of default and the associated losses
+
+
+
+### Negative risk-free
+
+
+
+Negative risk-free rate indicated investors pay the government for keeping their money safe. It's like a fee in a bank
+
+
+
+### Clean/dirty price
+
+
+
+Bond prices drop after coupon payments. To avoid "see-saw" pattern, they are **quoted net of accrued interest = clean price**
+
+
+
+Clean price $=$ Dirty price $-$ next coupon $\times \frac{d}{\Delta}$,
+where $\mathrm{d}$ is the number of days since the last coupon payment and $\Delta$ is the number
+of days between the last payment and the next.
+
+
+### Dirty price evolves as
+$$
+P V\left(1+r \frac{d}{\Delta}\right)
+$$
+
+
+
+Amplitude of **seesaw pattern is decreasing** because of lower present value closer to maturity, thus smaller increase in price over the period
+
+
+## Duration
+
+
+The **longer the maturity** of the bond, the **more sensitive to interest rates**. If interest changes, the bond with longer maturity is **locked in longer**
+
+
+
+### Duration defintion
+
+
+
+It's a measure of the average life of the cash flow that make up the bond. Formula:
+
+$$
+\frac{\frac{\text { coupon }}{1+r}+\frac{2 \times \text { coupon }}{(1+r)^{2}}+\ldots+\frac{N \times \text { coupon }}{(1+r)^{N}}+\frac{N \times f a c e}{(1+r)^{N}}}{P}
+$$
+or: 
+
+$$
+\frac{\sum_{n=1}^{N} \frac{n \times \operatorname{coupon}}{(1+r)^{n}}+\frac{N \times \text { face }}{(1+r)^{N}}}{P}
+$$
+
+
+
+Each cash flow is **weighted by the year in which it is received**
+
+
+
+- **Zero-coupon bonds** have **duration=maturity**
+- a **higher coupon rate decreases duration** as we get more return earlier
+- **higher discount rate decreaes duration**
+
+### Duration definition 2
+
+
+
+duration is **negative, normalised first derivative of the P w.r.t. DR**
+
+$$
+\text { Duration }=-\frac{1+r}{P} \frac{d P}{d r}
+$$
+The preceding relation can be rewritten as:
+$$
+\frac{d P}{P}=-\frac{\text { Duration }}{1+r} \times d r \equiv-\text { Modified Duration } \times d r
+$$
+
+### Modified duration 
+
+
+
+Modified duration **relates change in the DR to the resulting *percent* change in the price of the bond**
+
+
+
+### Absolute change in price for 1bp change in yield Val01
+
+$$Val01= dP(1bp)={modDur}\times{0.0001}\times{Price}$$
+
+
+
+### Delta Heding
+
+to **avoid exposure to identical changes in yield**, position is such that
+
+$$ P_{bond A} = \frac{Val01_{bond A}}{Val01_{bond B}}P_{bond B}$$
+
+
+## Convexity
+
+
+
+Convexity is **measure of non-linearity of a bond**
+
+###
+
+$$
+\text { Convexity }=\frac{\sum_{n=1}^{N} \frac{n \times(n+1) \times \text { coupon }}{(1+r)^{n+2}}+\frac{N \times(N+1)}{(1+r)^{N+2}}}{P}
+$$
+
+
+Convexity **decreases with coupan rate** and thus **increases with duration**
+
+
+
+### Convexity definition
+
+Convexity is **normalised second derivative of the price w.r.p. to the discount rate**
+
+
+
+$$
+\text { Convexity }=\frac{1}{\mathrm{P}} \frac{\mathrm{d}^{2} \mathrm{P}}{\mathrm{dr}^{2}}
+$$
+We have the relation:
+$$
+\frac{\mathrm{dP}}{\mathrm{P}} \approx-\text { Modified Duration } \times \mathrm{dr}+\frac{1}{2} \text { Convexity } \times(\mathrm{dr})^{2}
+$$
+
+
+
+## Immunisation
+
+
+Techniques used to shield an asset or liability **from changes in interest rates**
+
+
+
+$$
+\begin{array}{l}
+D_{A}=\frac{E}{E+L} D_{E}+\frac{L}{E+L} D_{L} \\
+\Leftrightarrow D_{E}=\frac{A}{E}\left[D_{A}-\frac{L}{A} D_{L}\right] \\
+\Leftrightarrow D_{E}=D_{A}+\frac{L}{E}\left[D_{A}-D_{L}\right]
+\end{array}
+$$
+$\mathrm{D}_{\mathrm{E}}$ increases in leverage $(\mathrm{L} / \mathrm{E})$ where $\mathrm{D}_{\mathrm{A}}>\mathrm{D}_{\mathrm{L}} ;$ it decreases otherwise.
+
+
+
+A bank with **negative $$D_{E}$$ increaes equity with increase in interest rates**
+
+
+
+
+Immuisation of equity = structure its assets and liabilities such that 
+
+
+
+$$
+D_{A}= \frac{L}{A}D_{L} \Leftrightarrow D_{E}=0
+$$
+
+
+
+Alternatively, the bank can enter into a **futures position F** such:
+
+$$
+FD_{F}=-ED_{E}=-(AD_{A}-LD_{L})
+$$
+
+## Information in Bond Prices and YTM
+
+
+
+Bond prices are determined by discounting promised cash flows by **opportunity cost of capital**. Thus, observing the prices, we can calculate the **opportunity cost of capital or YTM**
+
+
+
+### Yield to Maturity and Current Yield
+
+Yield to maturity **is measure of the return one obtains when holding to maturity**
+
+
+
+YTM is measure of annual return **IF** we can reinvest at the same yield after first period
+
+
+
+bonds carry **reinvestment risk** that *coupon payments cannot be reinviested at the initial YTM*
+
+
+
+$$
+\text {current/initial yield} = \frac{coupon}{price}
+$$
+
+
+## Risks
+
+- liquidity risk (**"of the run"** bonds are super liquid, purchasing without changing price)
+- default risk
+- reinvestment risk
+
+# Kentish town capital
+
+## Set up:
+
+- two bonds with different YTM, different maturity
+- $\Delta$ YTM is not due to diff. maturity, nor liquidity (both off-the-run, buying and selling quickly doesn't affect the price)
+- might be due to reinvestment risk
+- they have difference in convexity
+
+
+## Arbitrage position
+
+Go long the cheaper (higher yield) and short the dearer (lower yield) bond. **Bet on converging yields**.\\
+
+### Size 
+
+Size of the position is determined by delta hedging
+
+$$
+P_{\text {10.625, long }}-\frac{\text { Val01 }_{\text {10.625 }}}{\operatorname{Val} 01_{4.25}} P_{4.25,short}
+$$
+
+### Profit
+
+If yields converge fully, i.e. move by $\frac{\Delta}{2}=\frac{35bp}{2}$, the profit is=
+
+$\text{Long leg profit}-\text{Short leg profit} = Val01_long+Val01_short = modDur_long\times\text{move in bp}\times P_long - modDur_short\times\text{move in bp}\times P_short$
+
+### Epilogue
+
+*"Convexity is useful when there is more volatility or people being scared"*
+
+# Bank One
+
+## Asset-Liability management \
+
+Banks might be **asset sensitive** $\Rightarrow$ interest rates on assets reset more quickly than those on liabilities; increase (decrease) in interest rates increases (decreases) earnings. Banks might:
+
+- bear that risk
+- hedge it out (swaps, off-balance sheet)
+- transform it (balancing assets)
+
+### Swap hedge
+
+If a bank has too many floating rate assets and too many long term fixed liabilities, it receives (pays) too little (much) because of upward yield curve and , it goes opposite by a swap $\rightarrow$pays float short term and receives long term higher
+
+### Balance sheet transformation
+
+Raise new floating-rate funds to be invested in fixed rate (LT) securities. Requrires additional capital $\Rightarrow$ badly influences ROA, ROE. Also might not be possible market-wise. \
+
+Swaps are better in the regard they are off-balance sheet, thus only interest is concerned, no principal payments take place. \
+
+To calculate how much to transform, we perform immunitization.
+
+# Rose Tree \
+
+Shock to assets $\Rightarrow$ lowers equity (absorber) $\Rightarrow$ increase in leverage \
+
+In **absolute terms**, decline in assets = decline in equity. \
+
+In **relative terms**, it is bigger in equity:
+
+$$
+\delta_{E}=\frac{\Delta A}{E}=\frac{\Delta A}{e A}=\frac{\Delta}{e}>\Delta=\delta_{A}
+$$
+
+Where **e** is fraction of assets. \
+
+If the firm wants to reverse the increase in leverage byselling assets, it needs to sell total amount is equal to: 
+
+$$
+\begin{array}{c}
+\mathrm{e}=\frac{\mathrm{E}-\Delta \mathrm{A}}{\mathrm{A}-\Delta \mathrm{A}-\Sigma \mathrm{A}}=\frac{\mathrm{eA}-\Delta \mathrm{A}}{\mathrm{A}-\Delta \mathrm{A}-\Sigma \mathrm{A}} \\
+\Rightarrow \Sigma=\left(\frac{1}{\mathrm{e}}-1\right) \Delta
+\end{array}
+$$
+
+## Partial loan forgivness \
+
+Restructuring mortgage means forgiving a part to get at least something than nothing at all. \
+**Moral hazard!** Other borrowers might demand the same favorable treatment. \
+
+Discount rate obtained by CAPM. Asset beta of mortgage portfolio is averaging REIT equity betas like so:
+
+$$
+\beta_{A}=\frac{E}{E+D} \beta_{E}
+$$
+Which is the same as duration.
+
+# Securitisation  \
+
+Packaging asset to **issue securities that are secured by the package of assets** \
+
+Individual secutiries are generally **more liquid and creditworthy** than individual assets that secure them. (Typically mortgages, credit card receivables, auto loans)
+
+## What people did not realize \
+
+Securitisation **reduces risk** between the individual assets, but **increases risk** between two securities, because they are perfectly correlated.
+
+$$
+\left.\begin{array}{l}
+\text { Mortage } 1 \\
+\text { Mortage } 2
+\end{array}\right\} \text { Securitisation } \Rightarrow\left\{\begin{array}{l}
+\frac{M_{1}+M_{2}}{2}=S_{1} \\
+\frac{M_{1}+M_{2}}{2}=S_{2}
+\end{array}\right.
+$$
+$$
+Corr(S_1,S_2)=1
+$$
+
+
+
+
