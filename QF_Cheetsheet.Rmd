@@ -859,6 +859,127 @@ $$
 P\left(t, S_{t}\right)=K \cdot e^{-r(T-t)} \cdot \Phi\left(-d_{2}\right)-S_{t} \cdot \Phi\left(-d_{1}\right) .
 $$
 
-# Risk measures
+# Risk measures \
+
+**Risk** is "any event or action that may adversely affect an organization's ability to achieve its objectives and execute its strategies"
+
+#### Approaches to Risk measurement: \
+
+- notional-amount approach: the risk of a portfolio is defined as the (weighted) sum of the notionl values of the individual securities
+- factor sensitivity measures: give the change in portfolio value for a given predertmined change in one of the underlying risk factors
+- scenario-based risk measures: one considers a number of future scenarios and measures the maximum loss of the portfolio under these scenarios
+- risk measures based on loss distributions: stat. quantities describin characteristics of the loss distribution of the portfolio
+
+In our (CARM) interpreation, risk measures how much capital to inject to become adequately capitalized (under some regulations)
+
+### Three pillar concept under Basel 2
+
+- minimal capital charge: requirements for the calculation of the regulatory capital to ensure that a bank holds sufficient capital for its credit risk in the banking book its market risk in the trading book and operational risk
+- supervisory review process: local rergulators review the check and balances put in place for capital adequacy assessments, ensure that banks have adequate reg. capital and perform stress tests of a bank's capital adequacy
+- market discipline: banks are required to make their risk management processes more transparent
+
+### Reasons for Corp Risk management (turning M&M upside down)
+
+- RM can reduce taxes
+- RM is beneficial coz of better access to cap. markets
+- RM increases value in presence of bankrupcy costs (lower excpted value coz of lower P(default))
+- RM reduces impact of costly external financing
+
+## Acceptance set 
+
+Definition. A set $\mathcal{A}$ of random variables is called an acceptance set if \
+$\triangleright \mathcal{A}$ is non-trivial, i.e. $\mathcal{A} \neq \emptyset$ and $\mathcal{A} \subsetneq \mathcal{X}$, \
+$\triangleright \mathcal{A}$ is monotone, i.e. $X \in \mathcal{A}, Y \geq X \Longrightarrow Y \in \mathcal{A}$ (if X us acceptable and Y=X+100, X is also acceptable) \
+
+By $Y \geq X$ we mean either $Y(\omega) \geq X(\omega)$ for all $\omega \in \Omega$, or $\mathbb{P}$ -almost surely.
+The acceptance set is specified by the regulator. \
+
+An acceptance set is called: (L08, 17 for pictures)
+
+- *cone* if $X_{T} \in \mathcal{A} \Longrightarrow \forall \lambda>0: \lambda X_{T} \in \mathcal{A}$
+- *convex* if $X_{T}, Y_{T} \in \mathcal{A} \Longrightarrow \forall \lambda \in[0,1]: \lambda X_{T}+(1-\lambda) Y_{T} \in \mathcal{A}$
+- *closed* if $\mathcal{A}=\overline{\mathcal{A}},$ \
+
+## VaR 
+
+$VaR_\alpha(X)=-\mu - \sigma \phi^{-1}(\alpha)$
+
+- Finding var: order the outcomes (returns/cap positions) in a decreasing order. Start from the first and add probabilites until they are **stricly greater than $\alpha$**. Once they are, take the corresponsing $X_n * -1$ and that is VaR at level alpha.
+
+
+### Remarks
+
+- VaR does not account for severity of losses with prob $1-\alpha$
+- VaR does not account for diversification
+- VaR is not convex, hence not coherent - might penalize diversification
+- Simon Johnson (MIT):" VaR misses everything that matters when it matters"
+
+
+## Expected shortfal ES
+
+$$
+\mathcal{A}_{\mathrm{ES}_{\alpha}}:=\left\{X \in \mathcal{X} \mid \frac{1}{\alpha} \int_{0}^{\alpha} \operatorname{VaR}_{\beta}(X) \mathrm{d} \beta \leq 0\right\}
+$$
+
+$$
+ES_\alpha(X)=-\mu+\frac{\sigma}{\alpha} \Phi^{\prime}\left(\Phi^{-1}(\alpha)\right)
+$$
+
+An acceptance set $\mathcal{A}$ is said to be coherent if it is \
+- convex: $X, Y \in \mathcal{A}, 0<\lambda<1 \Longrightarrow \lambda X+(1-\lambda) Y \in \mathcal{A}$, \
+- conic: $X \in \mathcal{A}, \lambda \geq 0 \Rightarrow \lambda X \in \mathcal{A}$ \
+Financial interpretation: \
+- Convexity means that portfolios of acceptable positions are still acceptable, i.e. acceptability is preserved by diversification. \
+- Conicity means that acceptability is independent of the position size.\
+
+
+# Mean-variance Portfolio/Optimization MVP
+
+- we are risk averse but like money. Described by utility functions. Second deriv is $\leq$ 0. Thus, function mus be increasing and convave (slide 5)
+
+## Diversification principle
+
+$$
+X=\left\{\begin{array}{ll}
+2 m & \text { coin shows heads } \\
+0 & \text { coin shows tails. }
+\end{array} \quad Y=\left\{\begin{array}{ll}
+0 & \text { coin shows heads } \\
+2 m & \text { coin shows tails. }
+\end{array}\right.\right.
+$$
+Play both at once. Invest  $\frac{m}{2}$ in either game, total of $m$ invested. The new payoff is given by
+$$
+\frac{1}{2} X+\frac{1}{2} Y=\left\{\begin{array}{ll}
+m & \text { coin shows heads } \\
+m & \text { coin shows tails. }
+\end{array}\right.
+$$
+So in either case, we get our money back! The payoff is constant. Hence,
+$$
+\begin{array}{ll}
+\text { Expectation: } & \mathbb{E}\left[\frac{1}{2}(X+Y)\right]=\frac{1}{2} \cdot m+\frac{1}{2} \cdot m=m \\
+\text { Variance: } & \mathbb{V}\left[\frac{1}{2}(X+Y)\right]=\frac{1}{2} \cdot m^{2}+\frac{1}{2} \cdot m^{2}-m^{2}=0
+\end{array}
+$$
+
+
+We achieved diversification because of perfect negative correlation, which is a necessary, but not a sufficient condition.
+
+$$
+\begin{aligned}
+\rho x, Y &:=\operatorname{corr}(X, Y):=\frac{\operatorname{Cov}(\mathrm{X}, \mathrm{Y})}{\sqrt{\mathbb{V}[X] \mathbb{V}[Y]}}:=\frac{\mathbb{E}[(X-\overbrace{\mathbb{E}[X]}^{=m})(Y-\overbrace{\mathbb{E}[Y]}^{=m})]}{m \cdot m} \\
+&=\frac{\mathbb{E}\left[X Y-m X-m Y+m^{2}\right]}{m^{2}}=\frac{\mathbb{E}[X Y]-m^{2}-m^{2}+m^{2}}{m^{2}} \\
+&=\frac{0-m^{2}}{m^{2}}=-1
+\end{aligned}
+$$
+
+## Always to remember assumptions
+
+- preference to increase consumption
+- risk-aversion
+- therefore, utility functions are concave
+
+- **an investor maximies the portfolio's expected return for a given level of variance or vice versa, minimses the variance for a given level of expected return.
 
 
