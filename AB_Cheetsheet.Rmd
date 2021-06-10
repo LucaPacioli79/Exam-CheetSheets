@@ -46,6 +46,39 @@ where $\rho \leq 1$ is the discount rate and $\pi$ is the probability of being i
 $$
 \text { The efficient line: }\left(C_{1}, C_{2}\right) \text { such that } \pi C_{1}+(1-\pi) \frac{C_{2}}{R}=1
 $$
+### Autarky
+
+Autarky = no trade betweens agents, full economic indepence.
+
+
+If agent is **impatient** (needs to consume at t=1)
+- amount invested in *storage* technology : 1 - l
+- amount invested in the *long run technology* : l*I
+
+$C_{1}=1-I+\ell I$
+
+If agent is **patient** (needs to consume at t=2)
+- amount invested in *storage* technology : 1 - l
+- amount invested in the *long run technology* : RI
+
+$C_{2}=1-I+RI$
+
+$\left\{\begin{array}{lr}C_{1}=1-I+\ell I= & 1-(1-\ell) / \\ C_{2}=1-I+R I= & 1+(R-1) /\end{array}\right.$
+Q We have $C_{1} \leq 1$, with equality only if $I=0$
+- We have $C_{2} \leq R$, with equality only if $I=1$
+e Therefore, the expected consumption per head is
+$$
+\pi C_{1}+(1-\pi) \frac{C_{2}}{R}<1
+$$
+Autarky is not Pareto optimal because investment is inefficient (there are always some costly liquidations)
+
+If $I=0$ then $C_{1}=1$ and $C_{2}=1$, and if $I=1$ then $C_{1}=\ell$ and $C_{2}=R$.
+Therefore, points $(1,1)$ and $(\ell, R)$ are on the autarky line, which can be defined by the following equation:
+$$
+\frac{R-1}{R-\ell} C_{1}+\frac{1-\ell}{R-\ell} C_{2}=1
+$$
+
+
 ## Optimal allocation
 
 The optimal allocation $\left(C_{1}^{*}, C_{2}^{*}\right)$ satisfies the following condition
@@ -53,5 +86,101 @@ $$
 R \rho=\underbrace{\frac{u^{\prime}\left(C_{1}^{*}\right)}{u^{\prime}\left(C_{2}^{*}\right)}}_{\text {marginal rate of substitution }}
 $$
 
+
+# Banks as delegated monitors
+
+Main issue: solve information assymetries. Banks have expertise in screening, monitoring and auditing.
+
+- ex ante: *adverse selection* (or unobsservable heterogeneity)
+- interim: *moral hazard* 
+- ex post: *cash-flow manipulation*
+
+## Banks as monitors
+
+Small investors don't monitor, it is too costly
+
+Three necessary conditions: 
+
+- **small investor capacity**: each project needs the funds of several investors
+- **scale economies in monitoring**: the marginal cost of monitoring decreases with the number of projects
+- **low costs of delegation**: the cost of *monitoring the monitor* has to be relatively low
+
+### Model for monitoring
+
+- $\mathbf{n}$ identical risk-neutral firms seek to finance risky projects
+- Initial investment normalized to 1
+- Risk-free rate normalized to zero
+- Net returns $\tilde{y}$ are identically and independently distributed \
+* (Small) Investors
+- Each investor can invest only $1 / m \Rightarrow m$ investors are needed to finance one project
+- Investors are risk neutral \
+* Direct monitoring
+- Lenders can monitor borrowers at a cost $K$
+- Projects are profitable $\Rightarrow \underbrace{E[\tilde{y}]}_{\text {Expected Return }} \geq \underbrace{1+K}_{\text {Project Cost }}$
+
+### Cost of delegation
+
+- Default occurs when
+$$
+\underbrace{\tilde{y}_{1}+\tilde{y}_{2}+\ldots+\tilde{y}_{n}}_{\text {Return to the portfolio of loans }}-\underbrace{n K}_{\text {Monitoring Cost }} \leqslant \underbrace{n}_{\text {Return to Depositors }}
+$$
+- Default induces a bankruptcy cost $\gamma$
+$\bullet \Longrightarrow$ Total expected cost of default is
+$$
+C_{n}=\gamma \operatorname{Pr}\left(\tilde{y}_{1}+\tilde{y}_{2}+\ldots+\tilde{y}_{n}-n K<n\right)
+$$
+
+
+Result: delegated monitoring dominates direct lending if
+- investors are small (m>1)
+- the number "n" of projects is high enough: diversification eliminates risk in the limit
+
+## Monitoring and access to credit
+
+### Individual Credit Rationing
+
+When positive NPV projects are not financed, occurs because of moral hazard problem. Bank reduces this problem.
+
+### Borrower's incentive compatibility constraint
+
+- Borrowers' Incentive Compatibility Constraint (ICC)
+$$
+\begin{array}{l}
+\underbrace{p_{H}(Y-R)}_{\text {Borrower's payoff with the good project }} \geq \underbrace{p_{L}(Y-R)+B}_{\text {Borrower's payoff with the bad } \text { project }} \\
+\Leftrightarrow R \leq \underbrace{Y-\frac{B}{\Delta p}}_{\text {Pledgeable Income }}
+\end{array}
+$$
+
+B is the privaete benefit part
+
+### Pledgeable income
+
+maximum amount of income that the agent can pay to external financiers without losing the incentive to take the good action- exert high effort
+
+$R$ satisfies
+
+$$
+\underbrace{p_{H}(Y-R)}_{\text {Borrower's payoff with the good project }} \geq \underbrace{p_{L}(Y-R)+B}_{\text {Borrower's payoff with the bad project }}
+$$
+Hence, the pledgeable income is $Y-\frac{B}{\Delta p}$
+
+### Ledner's Participation constraint
+
+The participation constraint sets the conditions that havet o be dsatisfied so that the principal wants to participate
+
+$$
+\underbrace{p_{H}R}_{\text {Lender's return with the good project }} + 0 \text{(no bad projects)} \geq \underbrace{I-A}_{\text {Lender's investment in the project}}
+$$
+
+- Therefore, a market for loans exists if and only if both the (ICC) and (PC) constraints are satisfied
+- It implies
+
+$$
+\begin{array}{r}
+I-A \leq p_{H}\left(Y-\frac{B}{\Delta p}\right) \\
+\Leftrightarrow A \geq \bar{A}=I-p_{H}\left(Y-\frac{B}{\Delta p}\right)
+\end{array}
+$$
+- $\bar{A}>0$ when the NPV of the project $\left(p_{H} Y-I\right)$ is lower than the informational rent of the borrower $p_{H} \frac{B}{\Delta p}$
 
 
