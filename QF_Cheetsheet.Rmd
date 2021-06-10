@@ -222,7 +222,7 @@ $$
 $$
 a Taylor polynomial of degree two and so on.
 
-## Duation  
+## Duration  
 
 $\triangleright$ The Dollar-Duration $(D D)$ is the negative of the first derivative
 $$
@@ -483,4 +483,105 @@ $$
 In the long run such an event will happen approximately once every 775 trading days $(\approx$ once every 3 years \
 
 $\triangleright$ If the copula of $X$ is $C_{\nu=4, \rho=0.5}^{t}$ (student distribution) however, such an event will happen approximately $2.22$ times more often, i.e. $\approx$ once every $1.3$ years.!!!!!
+
+# Guest Lecture - Modelling dependencies
+
+## Pearson correlation
+
+$$
+\rho\left(X_{1}, X_{2}\right)=\frac{\operatorname{Cov}\left(X_{1}, X_{2}\right)}{\sqrt{\operatorname{Var}\left(X_{1}\right) \operatorname{Var}\left(X_{2}\right)}}
+$$
+
+$\text { where } \operatorname{Cov}\left(X_{1}, X_{2}\right)=E\left(X_{1} X_{2}\right)-E\left(X_{1}\right) E\left(X_{2}\right)$
+
+- parametric
+- only captures linear dependeces (no tail risk)
+
+## Spearman
+
+$\rho_{S}\left(X_{1}, X_{2}\right)=\rho\left(F_{1}\left(X_{1}\right), F_{2}\left(X_{2}\right)\right)$
+
+- not sensitive to outliers
+-good for heavy tailed distributions
+
+## Kendall
+
+$\tau\left(X_{1}, X_{2}\right)=E\left[\operatorname{sign}\left(\left(X_{1}-\tilde{X}_{1}\right)\left(X_{2}-\tilde{X}_{2}\right)\right)\right]$
+where $\tilde{X}_{1}$ and $\tilde{X}_{2}$ have the same joint distribution, but are independent of $X_{1}$ and $X_{2}$
+
+- not sensitive to outliers
+-good for heavy tailed distributions
+- !**appropraite to measure tail behavior**
+
+# Discrete Time Models
+
+## Adaptedness and predictability \
+
+We call an indexed family of RV a **stochastic process** \
+
+$\triangleright$ A stochastic process $Z=\left(Z_{t}\right)_{t=0, \ldots, T}$ is called $\mathbb{F}$ -adapted if $Z_{t}$ is $\mathcal{F}_{\text {(J) measurable for every }} t=0, \ldots, T$.
+$\triangleright$ A stochastic process $Y=\left(Y_{t}\right)_{t=1, \ldots, T}$ is called $\mathbb{F}$ -predictable if $Y_{t}$ is $\mathcal{F}_{(t-x)}-$ measurable for every $t=1, \ldots, T$
+In our model, the price process $\bar{S}=\left(\bar{S}_{t}\right)_{t=0, \ldots, T}$ is $\mathbb{F}$ -adapted.
+
+## Trading strategies \
+
+$\sum \xi_{t}^{k}$ represents the number of shares of asset $k$ held during the $t^{\text {th }}$ trading period between times $t-1$ and $t$.
+$\sum \xi_{t}^{k} S_{t-1}^{k}$ denotes the amount invested in the $k^{\text {th }}$ asset at time $t-1$, while $\xi_{t}^{k} S_{t}^{k}$ is the resulting value at time $t$.
+D Predictability of the strategy represents the fact that any investment must be allocated at the beginning of each trading period, without anticipating future prices.
+
+### Valuation process \
+
+
+The (discounted) value process $V=\left(V_{t}\right)_{t \in\{0, \ldots, T\}}$ of a trading strategy $\bar{\xi}$ is given by
+$\Rightarrow V_{0}=\bar{\xi}_{1} \cdot \bar{X}_{0}$ and $V_{t}=\bar{\xi}_{t} \cdot \bar{X}_{t}$ for $t=1, \ldots, T$
+$V_{t}$ represents the portfolio value at the end of the $t^{\text {th }}$ trading period.
+
+
+### Arbitrage opportunities 
+
+Arbitrage is a self-financing, risk-free trading strategy such that: $V_0 \leq 0;V_T \geq 0$
+
+### Martingale definition
+
+Definition. Let $(\Omega, \mathcal{F}, \mathbb{F}, \mathbb{P})$ be a filtered probability space. Then a stochastic process $M=\left(M_{t}\right)_{t=0, \ldots, T}$ is called a (P, $\left.\mathbb{F}\right)$ -martingale if
+
+$\triangleright M$ is $\mathbb{F}$ -adapted, \
+
+$\triangleright$ $\mathbb{E}_{\mathbb{P}}\left[\left|M_{t}\right|\right]<\infty$ for every $t \in\{0, \ldots, T\}$ \
+$\triangleright$ $\mathbb{E}_{\mathbf{P}}\left[M_{t} \mid \mathcal{F}_{s}\right]=M_{s}$, for all $0 \leq s \leq t \leq T$ \
+Interpretation. The best prediction given the information up until now is exactly the current value. This is our definition of a 'fair game'.
+
+**check whether $up+d-dp=0$, if not, not a margingale.** (probabilities of up-down with the values) \
+
+Market is arbitrage free only if $d<r_f<u$
+
+In this one-period binomial model, this means we search for a measure $\mathbb{P}^{*}$ identified by $\left(p^{*}, 1-p^{*}\right)$ such that
+$$
+p^{*} \frac{S_{0}(1+u)}{1+r}+\left(1-p^{*}\right) \frac{S_{0}(1+d)}{1+r}=S_{0}
+$$
+This is equivalent to
+$$
+p^{*}(1+u)+\left(1-p^{*}\right)(1+d)=1+r .
+$$
+## Binomial model
+
+Solving for $p*$ from above: \
+
+$$
+p*=\frac{r-d}{u-d}
+$$
+
+### In the two period tree
+
+$$
+\begin{aligned}
+100=200 p_{\mathrm{u}}^{*}+50 p_{\mathrm{d}}^{*} & \Longleftrightarrow p_{\mathrm{u}}^{*}=\frac{1}{3}, p_{\mathrm{d}}^{*}=\frac{2}{3} \\
+200=300 p_{\mathrm{uu}}^{*}+150 p_{\mathrm{ud}}^{*} & \Longleftrightarrow p_{\mathrm{uu}}^{*}=\frac{1}{3}, p_{\mathrm{ud}}^{*}=\frac{2}{3} \\
+50=60 p_{\mathrm{du}}^{*}+20 p_{\mathrm{dd}}^{*} & \Longleftrightarrow p_{\mathrm{du}}^{*}=\frac{3}{4}, p_{\mathrm{dd}}^{*}=\frac{1}{4}
+\end{aligned}
+$$
+
+Where $p_u+p_d=1; p_u=1-p_d$
+
+## Contingent claims (basically options)
 
