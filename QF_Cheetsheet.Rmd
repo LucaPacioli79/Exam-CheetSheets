@@ -568,7 +568,7 @@ $$
 Solving for $p*$ from above: \
 
 $$
-p*=\frac{r-d}{u-d}
+p*=\frac{r-d}{u-d} \Leftrightarrow 1-p*=\frac{u-r}{u-d}; 
 $$
 
 ### In the two period tree
@@ -583,5 +583,282 @@ $$
 
 Where $p_u+p_d=1; p_u=1-p_d$
 
-## Contingent claims (basically options)
+## Contingent claims (basically options) \
+
+$$
+\text { Pay-off CALL} \rightarrow \left(S_{T}-K\right)^{+}=\max \left(0, S_{T}-K\right) \text { . }
+$$
+
+$$
+\text { Pay-off PUT} \rightarrow \left(S_{T}-K\right)^{+}=\max \left(0, K- S_{T}\right) \text { . }
+$$
+
+*Contigent claim* with maturity T is attaible(replicable) if there exists a self-financing strategy $\bar{\xi}$ whose terminal port. value coincides with $C_T$, that is
+
+$$
+C_{T}=\bar{\xi}_{T} \cdot \bar{S}_{T} \quad \mathbb{P}-\mathrm{a.s}
+$$
+
+$C_{T}$ is attainable if and only if its corresponding discounted claim $H_{T}=\frac{C_{T}}{(1+r)^{r}}$ can be written as
+$$
+H_{T}=\bar{\xi}_{T} \cdot \bar{X}_{T}=V_{T}=V_{0}+\sum_{t=1}^{T} \xi_{t} \cdot\left(X_{t}-X_{t-1}\right)
+$$
+for a self-financing trading strategy $\bar{\xi}$ with value process $V$.
+
+The replicating strategy $\left(\overline{\xi_{1}}, \overline{\xi_{2}}\right)$ must satisfy the following:
+1. The self-financing property $\overline{\xi_{1}} \cdot \bar{S}_{1}=\overline{\xi_{2}} \cdot \bar{S}_{1}$ :
+$$
+\begin{array}{l}
+\xi_{1}^{0} \cdot B_{1}+\xi_{1}^{1} \cdot S_{1}\left(\omega_{u}\right)=\xi_{2}^{0} \cdot B_{1}+\xi_{2}^{1} \cdot S_{1}\left(\omega_{u}\right), \\
+\xi_{1}^{0} \cdot B_{1}+\xi_{1}^{1} \cdot S_{1}\left(\omega_{d}\right)=\xi_{2}^{0} \cdot B_{1}+\xi_{2}^{1} \cdot S_{1}\left(\omega_{d}\right),
+\end{array}
+$$
+2. The replicating property $C_{2}=\overline{\xi_{2}} \cdot \overline{S_{2}}$ :
+$$
+\xi_{2, u}^{0} \cdot B_{2}+\xi_{2, u}^{1} \cdot S_{2}\left(\omega_{u u}\right)=C_{2}\left(\omega_{u u}\right),
+$$
+$$
+\begin{array}{l}
+\xi_{2, u}^{0} \cdot B_{2}+\xi_{2, u}^{1} \cdot S_{2}\left(\omega_{u d}\right)=C_{2}\left(\omega_{u d}\right), \\
+\xi_{2, d}^{0} \cdot B_{2}+\xi_{2, d}^{1} \cdot S_{2}\left(\omega_{d u}\right)=C_{2}\left(\omega_{d u}\right) \\
+\xi_{2, d}^{0} \cdot B_{2}+\xi_{2, d}^{1} \cdot S_{2}\left(\omega_{d d}\right)=C_{2}\left(\omega_{d d}\right)
+\end{array}
+$$
+## Arbitrage free prices
+
+The goal is to price a discounted contigent claim $H_T$ without introducing arbitrage. If $H_T$ is attainble, the discounted initail investment needed for replicating $H_T$ is $\bar{\xi}_{1} \cdot \bar{X}_{0}=V_{0}=\mathbb{E}_{P^{*}}\left[H_{T}\right]$. It can be interpreted as the unique discounted arbitrage-free price for H.
+
+## Put-call parity
+
+At time $T$, one can observe that $K+\left(S_{T}-K\right)^{+}-\left(K-S_{T}\right)^{+}=S_{T}$ This implies that $V_{T}\left(P_{1}\right)=V_{T}\left(P_{2}\right)$.
+
+** Put call parity** 
+$$C_{t}-P_{t}=S_{t}-\frac{K B}{(1+r)^{t}} \Leftrightarrow K B_{t}+C_{t}-P_{t}=S_{t}$$
+
+### Price of a european call:
+
+$$
+Price(call) = \frac{1}{1+r}\left(\frac{r-d}{u-d}\left((1+u) S_{0}-K\right)^{+}+\frac{u-r}{u-d}\left((1+d) S_{0}-K\right)^{+}\right)
+$$
+
+## Complete markets
+
+*A multiperiod arbitrage-free market is called complete if every single contingent claim is attainable*
+
+$\Rightarrow$ arbitrage-free model is complete *iff* there exists **just one equivalent martingale measure** (unique P)
+
+## Replication \
+
+Formal description of payoff (left) with the replication (right). We again search for the weights $\xi_{0,1}$.
+
+$$\left(S_{1}-K\right)^{+}=\xi^{0} B_{1}+\xi^{1} S_{1}=\xi^{0}(1+r)+\xi^{1} S_{1}$$
+
+$$
+\begin{array}{l}
+\xi^{0}=\frac{(1+u)\left(S_{0}(1+d)-K\right)^{+}-(1+d)\left(S_{0}(1+u)-K\right)^{+}}{(1+r)(u-d)}, \\
+\xi^{1}=\frac{\left(S_{0}(1+u)-K\right)^{+}-\left(S_{0}(1+d)-K\right)^{+}}{S_{0}(u-d)}
+\end{array}
+$$
+
+## T-period binomial model
+
+$$
+S_{t}(\omega)=S_{0} \cdot(1+u)^{j_{t}(\omega)}(1+d)^{t-j_{t}(\omega)},
+$$
+where $j_{t}(\omega)$ is the number of up-moves in a total of $t$ moves, when the
+event $\omega$ occurs.
+
+We can rewrite simple return as
+$$
+\begin{aligned}
+R_{t}(\omega) &=\frac{S_{t}(\omega)-S_{t-1}(\omega)}{S_{t-1}(\omega)}=(1+d) \frac{1-Y_{t}(\omega)}{2}+(1+u) \frac{1+Y_{t}(\omega)}{2}-1 \\
+&=\frac{1}{2}\left(d\left(1-Y_{t}(\omega)\right)+u\left(1+Y_{t}(\omega)\right)\right)=\left\{\begin{array}{ll}
+u, & \text { if } Y_{t}(\omega)=1 \\
+d, & \text { if } Y_{t}(\omega)=-1
+\end{array}\right.
+\end{aligned}
+$$
+
+
+The price process of the risky asset can be written as
+$$
+S_{t}=S_{0} \prod_{s=1}^{t}\left(1+R_{s}\right) .
+$$
+The discounted price process is of the form
+$$
+X_{t}=\frac{S_{t}}{B_{t}}=S_{0} \prod_{s=1}^{t} \frac{1+R_{s}}{1+r}=\frac{S_{0}}{(1+r)^{t}} \prod_{s=1}^{t}\left(1+R_{s}\right) .
+$$
+
+# Stochastic calculus and B-S model \
+
+- discrete time stoch. procs. (binomial trees) are approximation of the continuos time stoch. process.
+- continuos time models are **limit** of discrete time models when "n" goes to infity
+
+## Brownian motion
+
+Definition. A one-dimensional standard Brownian motion is a stochastic
+process $\left(W_{t}\right)_{0 \leq t \leq T}$ with the following properties: \
+1. $W_{0}=0$, \
+2. $t \mapsto W_{t}(\omega)$ is a continuous function $\mathbb{P}$ -a.s.. \
+3. $\left(W_{t}\right)_{0 \leq t \leq T}$ is adapted to the filtration $\left(\mathcal{F}_{t}\right)_{0 \leq t \leq T}$, \
+4. !!!! the increments $W_{t}-W_{s}$ are independent and normally distributed with **variance $t-s$ and zero mean** for any $0 \leq s \leq t$. \
+D Intuitively, the change of Brownian motion on the interval $(t, t+\Delta t)$ can be perceived as $\Delta W_{t}:=W_{t+\Delta t}-W_{t}=\epsilon \sqrt{\Delta t}$, where
+$\epsilon \sim \mathcal{N}(0,1) .$
+
+### Important properties of Brownian motion \
+
+Martingale: Given the information up to $s<t$ the conditional expectation of $W_{t}$ is $W_{s}$, that is
+$$
+\mathbb{E}\left(W_{t} \mid \mathcal{F}_{s}\right)=W_{s}
+$$
+Q Quadratic variation: If we divide up the time interval $[0, t]$ into a partition $P$ with $n+1$ points $t_{i}$, then
+$$
+\langle W\rangle_{t}=\lim _{n \rightarrow \infty} \sum_{t_{i} \in P}\left(W_{t_{i}}-W_{t_{i-1}}\right)^{2} \underset{\text { a.s. }}{\longrightarrow} t
+$$
+Markov property: The conditional distribution of $W_{t}$ given information up until $s<t$ depends only on $W_{s}$. That is, for any event $A$ and $s<t$ it holds that
+$$
+\mathbb{P}\left(W_{t} \in A \mid \mathcal{F}_{s}\right)=\mathbb{P}\left(W_{t} \in A \mid W_{s}\right)
+$$
+
+Normality: Over finite time increments $t_{i-1}$ to $t_{i}, W_{t_{i}}-W_{t_{i-1}}$ is normally distributed with mean zero and variance $t_{i}-t_{i-1}$. \
+
+Continuity. The paths of Brownian motion are continuous, there are no discontinuities. Brownian motion is the continuous-time limit of the discrete-time random walk. \
+
+Non-differentiability: Almost surely (with probability 1), the paths are not differentiable at any point. Therefore, it is not possible to define $\int_{0}^{t} f(s) d W_{s}$ as $\int_{0}^{t} f(s) \frac{d W_{s}}{d s} d s$, i.e. \
+
+## Stochastic integration \
+
+Stochastic process:
+
+Definition. A process $\left(H_{t}\right)_{0 \leq t \leq T}$ is a simple process if it can be written as
+$$
+H_{t}(\omega)=\sum_{i=1}^{p} \phi_{i}(\omega) \mathbb{I}_{\left(t_{i-1}, t_{j}\right]}(t),
+$$
+where $0=t_{0}<t_{1}<\cdots<t_{p}=T$ and $\phi_{i}$ is $\mathcal{F}_{t_{i-1}}$ -measurable.
+
+Stochastic integration:
+
+Definition. A stochastic integral of a simple pracess $H=\left(H_{t}\right)_{0 \leq t \leq T}$ is a process $\left(\int_{0}^{t} H_{s} d W_{s}\right)_{0 \leq t \leq T}$ given by
+$$
+\int_{0}^{t} H_{s} d W_{s}=\sum_{i=1}^{p} \phi_{i}\left(W_{t_{i} \wedge t}-W_{t_{i-1} \wedge t}\right)
+$$
+where $a \wedge b=\min \{a, b\}$. \
+
+- Note that in particular $\int_{0}^{t} 1 d W_{s}=W_{t} .$ \
+ 
+- Given a $\left(\mathcal{F}_{t}\right)_{0 \leq t \leq T}$ -Brownian motion $\left(W_{t}\right)_{0 \leq t \leq T}$ and a $\left(\mathcal{F}_{t}\right)_{0 \leq t \leq T}$ -adapted process $\left(H_{t}\right)_{0 \leq t \leq T}$, one is able to define the stochastic integral $\left(\int_{0}^{t} H_{s} d W_{s}\right)_{0 \leq t \leq T}$ as soon as $\int_{0}^{T} H_{s}^{2} d W_{s}<\infty$.
+- the general concept extends that for simple processes.
+
+## Ito's lemma
+
+Definition. Let $(\Omega, \mathcal{F}, \mathbb{P}, \mathbb{F})$ be a filtered probability space and $\left(W_{t}\right)_{0 \leq t \leq T}$ a $\mathbb{F}$ -Brownian motion. An $\mathbb{R}$ -valued process $\left(X_{t}\right)_{0 \leq t \leq T}$ is called an Itoprocess if it can be written as
+$$
+X_{t}=X_{0}+\int_{0}^{t} K_{s} d s+\int_{0}^{t} H_{s} d W_{s}
+$$
+where
+$\unrhd X_{0}$ is $\mathcal{F}_{0}$ -measurable, \
+- $\left(K_{t}\right)_{0 \leq t \leq T}$ and $\left(H_{t}\right)_{0 \leq t \leq T}$ are $\left(\mathcal{F}_{t}\right)_{0 \leq t \leq T}$ -adapted processes, \
+- $\int_{0}^{t}\left|K_{s}\right| d s<\infty \quad \mathbb{P}$ -a.s., \
+- $\int_{0}^{t} H_{s}^{2} d s<\infty \quad \mathbb{P}-a .5 .$ \
+
+Derivative "shorthanded" version: $dX_t=K_tdt+H_tdW_t$ \
+
+- $dX_t$ is an increment of the process $X_t$
+- Brownian motion itself is and Ito process, where $W_0$ is zero, $K_s=0$ and $H_s=1$
+
+All this yields: 
+
+$$
+d Y_{t}=\frac{\partial f}{\partial t}\left(t, X_{t}\right) d t+\frac{\partial f}{\partial x}\left(t, X_{t}\right) d X_{t}+\frac{1}{2} \frac{\partial^{2} f}{\partial x^{2}}\left(t, X_{t}\right) d\langle X\rangle_{t}, \ (3)
+$$
+where the differentials are formally computed according to the following rules
+
+$$
+d t \cdot d t=d t \cdot d W_{t}=d W_{t} \cdot d t=0 \quad \text { and } \quad d W_{t} \cdot d W_{t}=d t
+$$
+
+#### Financial relevance of Ito's lemma:
+
+Think of $X_{t}$ as some underlying financial asset and of $Y_{t}=f\left(t, X_{t}\right)$ as a new product obtained from the underlying by a possibly nonlinear transformation $f$.
+
+Then the Ito lemma (3) shows us how the financial product reacts to changes in the underlying. 
+The important message of Ito's lemma is then that when using stochastic models (for $X_{t}$ ), a simple linear approximation is not good enough, one must also account for the second order behavior of $X_{t}$. \
+
+The trajectories of Brownian motion are of infinite variation (and finite quadratic variation) and the classical chain rule does not apply. \
+One can view Ito's formula as a purely analytical result which brovides an extension of the chain rule for $f \circ x$ to functions $x$ that have a nonzero quadratic variation.
+
+## Black-Scholes Model
+
+### Assumptions on the assets 
+
+- $r_f$  is constant, known and same for all maturities \
+- **log return of stock prices follows an Ito process** with constant drift ($\mu$) and volatility (Normal dis.) (also implies Geometric brownian motion) \
+- considering only Euro options and no dividends
+
+### Assumptions on the market
+
+- arbitrage free, complete, perfectly liquid and divisible
+- frictionless (No TC)
+- delta hedhing is performed continuosly
+
+### Formula of B-S derived by Ito \
+
+$S_{t}=S_{0} \cdot \exp \left(\left(\mu-\frac{1}{2} \sigma^{2}\right) t+\sigma W_{t}\right)$ \
+
+
+If we want to achieve **zero randomness in self financing portfolio**, which looks like this: $d \Pi_{t}=\frac{\partial V}{\partial t}\left(t, S_{t}\right) d t+\frac{\partial V}{\partial S}\left(t, S_{t}\right) d S_{t}+\frac{1}{2} \sigma^{2} S_{t}^{2} \frac{\partial^{2} V}{\partial S^{2}}\left(t, S_{t}\right) d t-\theta_{t} d S_{t}$
+
+Then we have to choose the proper weight theta of the short leg so the gain offset each other. This is achieved when:
+
+$\theta_{t}=\frac{\partial V}{\partial S}\left(t, S_{t}\right):=\Delta_{V}$
+
+- rebalanced continuosly: dynamic delta hedging
+
+After setting up the initial portfolio, the first der of the portfolio value is:
+
+$$
+d \Pi_{t}=\left(\frac{\partial V}{\partial t}\left(t, S_{t}\right)+\frac{1}{2} \sigma^{2} S_{t}^{2} \frac{\partial^{2} V}{\partial S^{2}}\left(t, S_{t}\right)\right) d t .
+$$
+
+#### Black scholes Partial differentail equaiton (PDE) \
+
+We should know the proof. Consult L06,s.37-41.
+
+B-S PDE = $$
+\frac{\partial V}{\partial t}\left(t, S_{t}\right)+\frac{1}{2} \sigma^{2} S_{t}^{2} \frac{\partial^{2} V}{\partial S^{2}}\left(t, S_{t}\right)+r S_{t} \frac{\partial V}{\partial S}\left(t, S_{t}\right)-r V\left(t, S_{t}\right)=0
+$$
+
+
+- B-S does not depend on $\mu$ !!
+
+## Black-scholes by Martingale \
+
+This yields the Black-Scholes formula for call options:
+$$
+C\left(t, S_{t}\right)=S_{t} \Phi\left(d_{1}\right)-K e^{-r(T-t)} \Phi\left(d_{2}\right)
+$$
+where
+$$
+d_{1}=\frac{\ln \left(\frac{S_{t}}{K}\right)+\left(r+\frac{\sigma^{2}}{2}\right)(T-t)}{\sigma \sqrt{T-t}}
+$$
+and
+$$
+d_{2}=d_{1}-\sigma \sqrt{T-t}
+$$
+$\Phi(\cdot)$ denotes the cdf of a $\mathcal{N}(0,1)$ distributed random variable
+$$
+\Phi(x):=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-\frac{s^{2}}{2}} d s
+$$
+
+Alternatively, we can derive it using the put-call parity relation
+$$
+C\left(t, S_{t}\right)-P\left(t, S_{t}\right)=S_{t}-K \cdot e^{-r(T-t)} .
+$$
+The put option price is
+$$
+P\left(t, S_{t}\right)=K \cdot e^{-r(T-t)} \cdot \Phi\left(-d_{2}\right)-S_{t} \cdot \Phi\left(-d_{1}\right) .
+$$
+
+# Risk measures
+
 
