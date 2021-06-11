@@ -980,6 +980,73 @@ $$
 - risk-aversion
 - therefore, utility functions are concave
 
-- **an investor maximies the portfolio's expected return for a given level of variance or vice versa, minimses the variance for a given level of expected return.
+- **an investor maximies the portfolio's expected return for a given level of variance or vice versa, minimses the variance for a given level of expected return**.
 
+## Var-Covar matrix
+
+- Finally, we need one more ingredient. The covariance between two returns $\ell, m \in\{1, \ldots, M\}$ is defined as
+$\operatorname{Cov}\left(R_{T, \ell}, R_{T, m}\right)=\sum_{n=1}^{N} p_{n}\left(R_{T, \ell}\left(\omega_{n}\right)-\mathbb{E}\left[R_{T, \ell}\right]\right)\left(R_{T, m}\left(\omega_{n}\right)-\mathbb{E}\left[R_{T, m}\right]\right)$
+We assemble the individual covariances in the covariance matrix $\operatorname{Cov}\left(\mathbf{R}_{T}\right) \in \mathbb{R}^{M \times M}$ of the random vector,
+$\operatorname{Cov}\left(\mathbf{R}_{T}\right)=\left[\begin{array}{cccc}\operatorname{Cov}\left(R_{T, 1}, R_{T, 1}\right) & \operatorname{Cov}\left(R_{T, 1}, R_{T, 2}\right) & \cdots & \operatorname{Cov}\left(R_{T, 1}, R_{T, M}\right) \\ \operatorname{Cov}\left(R_{T, 2}, R_{T, 1}\right) & \operatorname{Cov}\left(R_{T, 2}, R_{T, 2}\right) & \cdots & \operatorname{Cov}\left(R_{T, 2}, R_{T, M}\right) \\ \vdots & \vdots & \ddots & \vdots \\ \operatorname{Cov}\left(R_{T, M}, R_{T, 1}\right) & \operatorname{Cov}\left(R_{T, M}, R_{T, 2}\right) & \cdots & \operatorname{Cov}\left(R_{T, M}, R_{T, M}\right)\end{array}\right.$ \
+ Note that $\operatorname{Cov}\left(R_{T, m}, R_{T, m}\right)=\mathbb{V}\left[R_{T, m}\right]$, and thus, the diagonal of $\operatorname{Cov}\left(\mathbf{R}_{T}\right)$ is the variance vector, $\operatorname{diag}\left(\operatorname{Cov}\left(\mathbf{R}_{T}\right)\right)=\mathbb{V}\left[\mathbf{R}_{T}\right] .$
+
+## Implementation
+
+**portfolio** is a *linear combination* of all individual assets. Coefficient $\alpha$ denote the weights. We investing all our wealth, i.e. sum of alphas = 1
+
+Simple return of the portfolio:
+
+$$
+\begin{aligned}
+R_{T}^{\alpha} &=\frac{P_{T}^{\alpha}}{P_{0}^{\alpha}}-1=\frac{\sum_{m=1}^{M} \frac{\alpha_{m} W}{P_{0, m}} P_{T, m}}{W}-\sum_{m=1}^{M} \alpha_{m} \\
+&=\sum_{m=1}^{M} \alpha_{m} \underbrace{\left(\frac{P_{T, m}}{P_{0, m}}-1\right)}_{=R_{T, m}}=\sum_{m=1}^{M} \alpha_{m} R_{T, m} .
+\end{aligned}
+$$
+
+$$
+\mathbb{E}\left[R_{T}^{\alpha}\right]=\sum_{n=1}^{N} p_{n} R_{T}^{\alpha}\left(\omega_{n}\right)
+$$
+
+### Portfolio's return as linear combination of individual expectations.
+
+Showing that expectation of the portfolio's returns
+
+Based on the result from the previous exercise, we can write $R_{T}^{\alpha}$ as the linear combination of the individual returns,
+$$
+\begin{aligned}
+\mathbb{E}\left[R_{T}^{\alpha}\right] &=\sum_{n=1}^{N} p_{n} R_{T}^{\alpha}\left(\omega_{n}\right)=\sum_{n=1}^{N} p_{n} \sum_{m=1}^{M} \alpha_{m} R_{T, m}\left(\omega_{n}\right) \\
+&=\sum_{m=1}^{M} \alpha_{m} \underbrace{\sum_{n=1}^{N} p_{n} R_{T, m}\left(\omega_{n}\right)}_{=\mathbb{E}\left[R_{T, m}\right]}=\sum_{m=1}^{M} \alpha_{m} \mathbb{E}\left[R_{T, m}\right]=\boldsymbol{\alpha}^{T} \mathbb{E}\left[\mathbf{R}_{T}\right] .
+\end{aligned}
+$$$
+
+
+
+### Variance of the portfolio's returns (proof s.59)
+
+$$
+\mathbb{V}\left[R_{T}^{\alpha}\right]=\sum_{\ell=1}^{M} \sum_{m=1}^{M} \alpha_{\ell} \alpha_{m} \operatorname{Cov}\left(R_{T, \ell}, R_{T, m}\right)=\boldsymbol{\alpha}^{\top} \operatorname{Cov}\left(\mathbf{R}_{T}\right) \boldsymbol{\alpha}
+$$
+### Constrained optimasation (Markowitz' port. optimization problem / MVO)
+
+M-V is a **constrained optimisation problem**:
+
+- minimise or maxise an objective function over all possible portfolio combinations, hence, over all possible weight vectors $\alpha$ 
+- The optimisations are subject to a set of constraints $$ \mathcal{C}$$
+
+#### First way: minimize risk for set return MV-Min
+
+We only have a budget (wealth) and an objective constraint (fixing return). Arbitrary short-selling is allowed.
+$$
+\mathcal{C}_{\mathrm{E}}=\left\{\mathbf{1}^{\top} \boldsymbol{\alpha}=1, \quad \mathbb{E}\left[R_{T}^{\alpha}\right] \geq E^{*} \text { for some fixed } E^{*} \in \mathbb{R}\right\}; \text { where  } E^{*} \text{is our required return}
+$$
+
+Choosing too large required return can lead to empty set. In words, the first contraint (budget) requires alphas to sum up to 1. The second say expected return is no less than the target.
+
+#### Second way: maximize return for set risk MV-Max
+
+$$
+\mathcal{C}_{\mathrm{V}}=\left\{\mathbf{1}^{\boldsymbol{\top}} \boldsymbol{\alpha}=1, \quad \mathbb{V}\left[R_{t}^{\alpha}\right] \leq \boldsymbol{V}^{*} \text { for some fixed } V^{*}>0\right\} \text { . }
+$$
+
+##### Example 
 
