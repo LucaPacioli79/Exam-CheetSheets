@@ -102,6 +102,9 @@ $$
 
 
 ### Examples of quantiles
+
+![Plot title. ](Sheet_insertimage_34.png)
+
  $$
 \begin{array}{c|c} 
 & q_{\alpha}^{-}(X)=q_{\alpha}^{+}(X) \\
