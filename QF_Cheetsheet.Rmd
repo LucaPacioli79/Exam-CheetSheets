@@ -1026,6 +1026,7 @@ $$$
 $$
 \mathbb{V}\left[R_{T}^{\alpha}\right]=\sum_{\ell=1}^{M} \sum_{m=1}^{M} \alpha_{\ell} \alpha_{m} \operatorname{Cov}\left(R_{T, \ell}, R_{T, m}\right)=\boldsymbol{\alpha}^{\top} \operatorname{Cov}\left(\mathbf{R}_{T}\right) \boldsymbol{\alpha}
 $$
+
 ### Constrained optimasation (Markowitz' port. optimization problem / MVO)
 
 M-V is a **constrained optimisation problem**:
@@ -1049,4 +1050,51 @@ $$
 $$
 
 ##### Example 
+
+$$
+\begin{array}{|c|c|c|}
+\hline \text { Stock } & \text { Expected Return } & \text { Standard Deviation } \\
+\hline \text { A } & \mu_{A}=10 \% & \sigma_{A}=5 \% \\
+\hline \text { B } & \mu_{B}=15 \% & \sigma_{B}=10 \% \\
+\hline
+\end{array}
+$$
+Correlation $\rho=-1$
+
+
+$$
+\mu=\left(\begin{array}{l}
+\mu_{A} \\
+\mu_{B}
+\end{array}\right)=\left(\begin{array}{c}
+0.1 \\
+0.15
+\end{array}\right) \text { and } \Sigma=\left(\begin{array}{cc}
+\sigma_{A}^{2} & \sigma_{A} \sigma_{B} \rho \\
+\sigma_{A} \sigma_{B} \rho & \sigma_{B}^{2}
+\end{array}\right)=\left(\begin{array}{cc}
+0.0025 & -0.005 \\
+-0.005 & 0.01
+\end{array}\right)
+$$
+
+Setting the weights of the portfolio $\omega=\left(\omega_{A}, \omega_{B}\right)^{\top}$, the variance of the portfolio is given by
+
+$$
+\begin{aligned}
+\sigma_{p}^{2} &=\omega^{\top} \Sigma \omega=\left(\begin{array}{ll}
+\omega_{A} & \omega_{B}
+\end{array}\right)\left(\begin{array}{cc}
+\sigma_{A}^{2} & \sigma_{A} \sigma_{B \rho} \\
+\sigma_{A} \sigma_{B} \rho & \sigma_{B}^{2}
+\end{array}\right)\left(\begin{array}{l}
+\omega_{A} \\
+\omega_{B}
+\end{array}\right) \\
+&=\omega_{A}^{2} \sigma_{A}^{2}+2 \omega_{A} \omega_{B} \sigma_{A} \sigma_{B} \rho+\omega_{B}^{2} \sigma_{B}^{2} \\
+&=\omega_{A}^{2} \cdot 0.0025-\omega_{A} \omega_{B} \cdot 0.01+\omega_{B}^{2} \cdot 0.01 \\
+&=\left(0.05 \omega_{A}-0.1 \omega_{B}\right)^{2}
+\end{aligned}
+$$
+
 
