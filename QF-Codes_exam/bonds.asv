@@ -1,0 +1,14 @@
+function [price0,priceC, yield0, yieldC, dur, mDur, macDur, conv] = bonds(price, yield, coupon, FV, maturity, period)
+
+price0 = FV ./ (1+yield/period)^(period*maturity)
+
+priceC = (coupon ./ yield) * (1- (1/(1+yield)^maturity)) + FV / ((1+yield) ^ maturity)
+
+yield0 = ((FV ./ price)^(1/(period*maturity)) - 1) * period
+yield0conti = log(
+
+yieldC = 1 ./ (price) ^ (1/maturity) 
+
+
+end
+
