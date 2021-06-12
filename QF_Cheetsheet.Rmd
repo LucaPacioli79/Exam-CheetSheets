@@ -201,7 +201,11 @@ Continuous compounding (used ubiquitously in the quantitative finance literature
 $$
 P\left(y_{c}\right)=\frac{C_{T}}{\exp \left(y_{c} T\right)}=e^{-y_{c} T} C_{T}
 $$
-$yield = \frac{\frac{CT}{P(y)}}{T}$
+$yield = ({\frac{FV}{C_T}})^\frac{1}{T}-1$
+
+$$
+1+y_{p.a.} = (1+\frac{y_{p.s.}}{2})^2=exp(y_{continous})
+$$
 
 $$
 P(y)=\frac{c F}{y}\left(1-\frac{1}{(1+y)^{T}}\right)+\frac{F}{(1+y)^{T}}
