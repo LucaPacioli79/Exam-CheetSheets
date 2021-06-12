@@ -77,15 +77,15 @@ $$
 \operatorname{Var}(X)=\frac{(b-a)^2}{12}
 $$
 
-## Covariance \
+## Covariance between two RV \
 
 expected value of the product of their SD. 
 
 $$
-\operatorname{cov}(X, Y)=\sigma_{X Y}=\sigma(X, Y)=\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+\operatorname{cov}(X, Y)=\frac{\sigma_{X Y}=\sigma(X, Y)}{N-1}=\frac{\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]}{N-1}
 $$
 $$
-\operatorname{cov}(X, Y)= \mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]
+\operatorname{cov}(X, Y)= \frac{\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]}{N-1}
 $$
 
 ## Pearson's correlation \
