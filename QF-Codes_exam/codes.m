@@ -33,7 +33,7 @@ DVBP = ModDuration .* 0.0001
 Yield = [0.05];
 CouponRate = 0.04;
 Settle   = datenum('24-Jun-2000');
-Maturity = datenum('24-Jun-2003'); %need to change to year according to maturity
+Maturity = datenum('24-Jun-2005'); %need to change to year according to maturity
 
 Period = 1;  %changes how often per year interest is accrued
 
@@ -44,10 +44,23 @@ Settle, Maturity, Period, Basis)
 
 DollarConvexity = YearConvexity .* Yield
 
-price0 = 97.2768
-deltaYield = 0.01;
+price0 = 100;
+deltaYield = 0.001;
 
 changeInPrice = -ModDuration .* price0 * deltaYield + ( -0.5 * YearConvexity * price0 *deltaYield^2)
+
+YearConvexity = 50;
+ModDuration = 7;
+changeInPrice = -ModDuration .* price0 * deltaYield + ( -0.5 * YearConvexity * price0 *deltaYield^2)
+
+%%% Zero coupon convexity 
+
+maturity = 5;
+yield = 0.05;
+
+
+T = maturity; 
+zeroCouponConvexity = ((T+1)*T) ./ ((1+yield)^2),
 
 %%%% Coupon Bonds
 

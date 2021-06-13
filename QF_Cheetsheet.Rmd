@@ -182,7 +182,7 @@ Where $\nu$ denotes the degrees of freedom.
 
 # Bonds
 
-## Present value
+## Present value of Zero coupon bonds
 
 $$
 PV(y)=\frac{C_{T}}{(1+y)^{T}}
@@ -206,6 +206,7 @@ $yield = ({\frac{FV}{C_T}})^\frac{1}{T}-1$
 $$
 1+y_{p.a.} = (1+\frac{y_{p.s.}}{2})^2=exp(y_{continous})
 $$
+**Price of a coupon paying bond** 
 
 $$
 P(y)=\frac{c F}{y}\left(1-\frac{1}{(1+y)^{T}}\right)+\frac{F}{(1+y)^{T}}
@@ -258,15 +259,28 @@ P^{\prime \prime}(y) &=\frac{\mathrm{d}^{2} P}{\mathrm{~d} y^{2}}(y)=\sum_{t=1}^
 \end{aligned}
 $$
 
-$\unrhd$ Dollar convexity $(D C)$ is defined as the second derivative of the bond price with respect to the yield, that means we set
+#### Dollar convexity 
+
+$(D C)$ is defined as the second derivative of the bond price with respect to the yield, that means we set
+
 $$
 D C(y)=\frac{\mathrm{d}^{2} P}{\mathrm{~d} y^{2}}(y)=P^{\prime \prime}(y)
 $$
-$\$ Bond convexity $(\kappa)$ is defined to be the second derivative of the bond price with respect to the yield, divided by the bond price, that is
+#### Bond convexity 
+
+$(\kappa)$ is defined to be the second derivative of the bond price with respect to the yield, divided by the bond price, that is
+ 
 $$
 \kappa(y)=\frac{D C(y)}{P(y)}=\frac{P^{\prime \prime}(y)}{P(y)}
 $$
 Note that some practitioners refer to convexity as the second derivative divided by the present value and additionally multiplied by the factor $\frac{1}{2}$
+
+#### Zero Coupon convexity
+
+$$
+\kappa(y)=\frac{(T+1) T}{(1+y)^{2}}
+$$
+
 
 ### Conclusions:
 
