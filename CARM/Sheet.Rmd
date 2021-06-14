@@ -290,7 +290,7 @@ $$
 X \in \mathcal{A} \Longleftrightarrow \rho_{\mathcal{A}}(X) \leq 0 \Longleftrightarrow X_{0} \geq \rho_{\mathcal{A}}\left(X-X_{0}\right)
 $$
 
-### Monotonicty 
+## Monotonicity 
 
 $$
 X \in \mathcal{A}, Y \geq X \Longrightarrow Y \in \mathcal{A}
@@ -298,7 +298,9 @@ $$
 
 If company A has more capital than company B, which is adeq. cap., than A is also adeq. cap. Important for holdings, consolidation, etc.
 
-### Stability under scaling
+**ALL** discussed RM are monotone
+
+## Stability under scaling
 
 We say that $\mathcal{A}$ is stable under scaling whenever
 $$
@@ -309,7 +311,15 @@ Stab. under scaling means acceptability is **independent of the size** od the ca
 
 !! LVaR is NOT homogenous, scaling doesnt work for it.
 
-### Stability under aggregation
+Following risk measures are (not) stable under scaling (**positively homogenous**)
+
+- VaR: YES
+- ES: YES
+- WC: YES
+- LVaR: NO
+- RVaR: YES
+
+## Stability under aggregation
 
 If two positions are independtly adeq. cap., than their sum is also adeq. cap. Again important for consolidation, subsidiaries etc.
 
@@ -323,9 +333,9 @@ The $\leq$ sign, meaning sometimes two positions aggregated yield an "overcapita
 
 - sum of cap. req. of indi. subposition is conservative proxy for the cap. req. of the agg. position (challenging to estimate)
 - CA can be enforec in a decentralized way
-- no incentive to break up balance sheet
+- no incentive to break up balance sheet (because joing BS has lower cap req. because of diversificatoin)
 
-Following risk measures are (not) subadditive:
+Following risk measures are (not) stable under aggreation (sub-additive):
 
 - VaR: NO
 - ES: YES
@@ -333,9 +343,34 @@ Following risk measures are (not) subadditive:
 - LVaR: NO
 - RVaR: NO
 
-### Coherence
+VaR is not sub-additive, because (intuition) *if one defaults, the other does not "help out", as they are "standalone*.
+
+However, by some magic, it is possible to make them subadditive
+
+Proposition. Let $0<\alpha<\beta<1$. Then, for all $X_{1}, \ldots, X_{n} \in \mathcal{X}$ we have
+$$
+\operatorname{VaR}_{\alpha}\left(\sum_{i=1}^{n} X_{i}\right) \leq \inf \left\{\sum_{i=1}^{n} \operatorname{VaR}_{\alpha_{i}}\left(X_{i}\right) ; \alpha_{1}, \ldots, \alpha_{n} \in(0,1), \sum_{i=1}^{n} \alpha_{i}=\alpha\right\}
+$$
+as well as
+$$
+\begin{array}{r}
+\operatorname{RVaR}_{\alpha, \beta}\left(\sum_{i=1}^{n} X_{i}\right) \leq \inf \left\{\sum_{i=1}^{n} \operatorname{RVaR}_{\alpha_{i}, \beta_{i}}\left(X_{i}\right) ; 0<\alpha_{i}<\beta_{i}<1\right. \\
+\left.\sum_{i=1}^{n} \alpha_{i}=\alpha, \max _{i=1, \ldots, n}\left\{\beta_{i}-\alpha_{i}\right\}=\beta-\alpha\right\}
+\end{array}
+$$
+
+Interpretation. The VaR of an aggregated position can always be controlled by a sum of individual VaRs with respect to suitable probabilitv levels $\alpha_{1}, \ldots, \alpha_{n} .$ To minimize the sum, one could associate the lower levels to those subpositions with lighter tails and the higher levels to those subpositions with heavier tails. However, note that we must have $\alpha_{i}<\alpha$ for every $i \in\{1, \ldots, n\}$. A similar situation holds for RVaR.
+
+## Coherence
 
 **We say that $\mathcal{A}$ is COHERENT iff it's BOTH stable under scaling AND aggregation**.
+
+Proposition. If $\rho_{\mathcal{A}}$ is coherent, then we have
+$$
+\rho_{\mathcal{A}}\left(\sum_{i=1}^{n} a_{i} X_{i}\right) \leq \sum_{i=1}^{n} a_{i} \rho_{\mathcal{A}}\left(X_{i}\right)
+$$
+for all $X_{1}, \ldots, X_{n} \in \mathcal{X}$ and $a_{1}, \ldots, a_{n} \in[0, \infty)$
+
 
 Following risk measures are (not) coherent
 
@@ -345,11 +380,10 @@ Following risk measures are (not) coherent
 - LVaR: NO
 - RVaR: NO
 
-!!! Careful:
+**!!! Careful:**
 
 If we have a fully-leveraged positions (zero-cost LS portfolio e.g.), we accumulate **loss peaks in the tail**, but because of subaddivity, the position even improves CA.
 
-# 6. Tail risks
 
 ## Sensitivity to tail risk
 
@@ -378,7 +412,7 @@ ONLY *ES* is sensitivity to tail risks!!
 
 
 
-## Acceptability and distributions
+## Acceptability and distributions - Law invariance
 
 We say that $\mathcal{A}$ is law invariant whenever
 $$
@@ -389,14 +423,14 @@ $$
 
 Law invariance says that acceptability depends only on the **probability distribution** of a  capital position. Meaning we can use statistical estimation to compute capital requirements.
 
-# 7. Surplus and default profiles
+## Surplus and default profiles
 
 - shareholders' surplus: random var, $S_x=max(X,0) = max(A -L,0)$ : what is extra from the acc. set, shareholders' payoff
 - shareholders' default option, $D_x=-min(X,0) = max(-X,0) = max(L-A,0)$ : incorporates the limited liability.If L-A is negative, meaning there is less cash than liabilities to satisfy them, creditors get 0 (max condition) and can suck it
 
 #### For every capital positiion we have X=Sx-Dx
 
-## Protection of liability holders
+## Surplus invariance - Protection of liability holders
 
 Definition. We say that $\mathcal{A}$ is surplus invariant if
 $$
@@ -407,8 +441,6 @@ $$
 
 Surplus invariance = company whose default option is smaller than of an acceptable company, it's also acceptable.
 
-## Surplus invariance
-
 Proposition. For every acceptance set $\mathcal{A}$ the following are equivalent:
 - For every capital position $X \in \mathcal{X}$ we have
 $$
@@ -416,6 +448,61 @@ X \in \mathcal{A} \Longleftrightarrow-D_{x}=\min (X, 0) \in \mathcal{A}
 $$
 $\mathcal{A}$ is surplus invariant.
 Interpretation. The outcome of a surplus-invariant capital adequacy test is independent of (the size of) the surplus and is only driven by the default profile.
+
+Following risk measures are (not) surplus invariant:
+
+- VaR: YES
+- ES: NO
+- WC: YES
+- LVaR: YES
+- RVaR: NO
+
+### Surplus invariance under ES
+
+Proposition. Let $\alpha \in(0,1) .$ For every capital position $X \in \mathcal{X}$ such that $\mathrm{ES}_{\alpha}(X) \leq 0$ we have
+$$
+\mathrm{ES}_{\alpha}(X)=\frac{1}{\alpha} \int_{0}^{\mathbb{P}(X<0)} \underbrace{\operatorname{VaR}_{p}\left(-D_{X}\right)}_{\geq 0} \mathrm{~d} p+\frac{1}{\alpha} \int_{\mathbb{P}(X<0)}^{\alpha} \underbrace{\operatorname{VaR}_{p}\left(S_{X}\right)}_{\leq 0} \mathrm{~d} p \leq 0 (\text{necessary oncidtion})
+$$
+Interpretation. The above result shows in a very clear way why ES fails to be surplus invariant: When computing ES the interests of the shareholders $\left(S_{X}\right)$ are mixed up with those of the liability holders $\left(D_{X}\right)$. In particular, the acceptability condition $\mathrm{ES}_{\alpha}(X) \leq 0$ is satisfied if and only if one of the following cases:
+- either $D_{X}=0$, in which case the company is always solvent,
+- or $D_{X} \neq 0$ and $S_{X}$ is high enough to offset $D_{X}$.
+Remark. Note that $\mathbb{P}(X<0) \leq \alpha$ holds for every $X \in \mathcal{X}$ such that $\mathrm{ES}_{\alpha}(X) \leq 0$
+
+![Plot title. ](Sheet_insertimage_35.png)
+
+## Currency invariance
+
+Definition. We say that $\mathcal{A}$ is currency invariant whenever
+$X \in \mathcal{A} \Longrightarrow R X \in \mathcal{A}$ for every exchange rate $R \in \mathcal{X}$
+Interpretation. Under currency invariance, whether or not a company passes the capital adequacy test is independent of the accounting currency.
+
+If Curr. Invariance fails, companies could use regulatory arbitrage to transform inadequate position to an adequate one.
+
+Following risk measures are (not) currency invariant:
+
+- VaR: YES
+- ES: NO
+- WC: YES
+- LVaR: NO
+- RVaR: NO
+
+### VaR and ES
+
+Proposition. Let $\alpha \in(0,1)$. For every capital position $X \in \mathcal{X}$ we have
+$$
+\mathbb{P}(R X<0)=\mathbb{P}(X<0)
+$$
+for every exchange rate $R \in \mathcal{X}$.
+However, this does not mean that VaR does not depend on the underlying currency! In fact, we typically have
+$$
+\underbrace{\operatorname{VaR}_{\alpha}(R X)}_{\text {EUR }} \neq \underbrace{\operatorname{VaR}_{\alpha}(X)}_{\text {CHF }}
+$$
+
+
+
+![Currency (in)variance under ES](Sheet_insertimage_36.png)
+
+
 
 
 # Summary (SUPER IMPORTANT)
@@ -497,7 +584,7 @@ Quantity $\rho(V1-V0)$ is the capital to be injected to ensure we have a profit 
 
 # Estimation setting
 
-```{r}
+```{r, echo=FALSE}
 library ( zoo )
 library ( pdfetch )
 library (ggplot2)
@@ -512,7 +599,7 @@ plot (t ,x , type ="l" , xlab ="Relative returns" , ylab = "", main="S&P500 Rela
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 hVaR = function (x , alpha ){
 n = length (x)
 k = floor (n* alpha )
@@ -532,7 +619,7 @@ hVarOutput = compute_hVaR (x ,250 ,0.01)
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 hES = function (x , alpha ){
 n = length (x)
 k = floor (n* alpha )
@@ -572,7 +659,7 @@ ggplot(df, aes(date)) +
 
 ```
 
-# Estimatoin of VaR and ES - The Weighted Historical Approach 
+# Estimation of VaR and ES - The Weighted Historical Approach 
 
 ## The weighted sample distribution function
 
@@ -587,7 +674,7 @@ $$
 
 ### Interpretation 
 
-The sample distribution is a step-wise function constructed by **weighing past observations through the (probability) weights $\pi(x_{1...n})$. It is a probability
+The sample distribution is a step-wise function constructed by **weighing past observations through the (probability) weights $\pi(x_{1...n})$. It is a probability**
 
 
 For every $\alpha \in(0,1)$ we define the index
@@ -610,7 +697,20 @@ The weighted historical VaR and ES coincide with the VaR and ES of the weighted 
 
 ### Setting probability weights
 
-```{r}
+In our estimations we consider probability weights of the form
+$$
+\pi\left(x_{i}\right)=\frac{1-\lambda}{1-\lambda^{n}} \lambda^{n-i}
+$$
+for suitable $\lambda \in(0,1) .$ Standard choices are $\lambda=0.99$ or $\lambda=0.98$
+Interpretation. The older the ith observation, the lower the index $i$, the lower the weight $\pi\left(x_{i}\right)$. This shows that older observations receive less importance than more recent ones. Moreover, note that
+$$
+\lim _{\lambda \rightarrow 1} \frac{1-\lambda}{1-\lambda^{n}} \lambda^{n-i}=\frac{1}{n}
+$$
+This means that for $\lambda \rightarrow 1$ we get back to the historical case.
+
+
+
+```{r, echo=FALSE}
 pweights = function ( lambda ){
 i = 1:250
 pi = lambda ^(250 - i )* (1 - lambda )/ (1 - lambda ^250)
@@ -618,9 +718,9 @@ return(pi)
 }
 ```
 
-### Compute historical weighted Var
+### Compute historical weighted Var (code hidden)
 
-```{r}
+```{r, echo=FALSE}
 wVaR = function (x , lambda , alpha ){
 pi = pweights ( lambda )
 k = min ( which ( cumsum ( pi [ order (x )]) > alpha )) -1
@@ -642,7 +742,7 @@ hold2 = compute_wVaR(x ,250 ,0.98 ,0.01)
 
 ### Historical weighted ES
 
-```{r}
+```{r, echo=FALSE}
 wES = function (x , lambda , alpha ){
 pi = pweights ( lambda )
 q = pi [ order (x )]
@@ -722,6 +822,8 @@ Interpretation. The acronym EWMA stands for exponential weighted moving average.
 
 We define variance by (as above)
 
+### Setting EWMA weights
+
 $$
 V_{n}^{E W M A}\left(x_{1}, \ldots, x_{n}\right):=(1-\lambda) \sum_{i=1}^{n} \lambda^{n-i}\left(x_{i}-M_{n}\left(x_{1}, \ldots, x_{n}\right)\right)^{2}
 $$
@@ -729,18 +831,29 @@ $$
 Lambda is usually .99 or .98. Interpretation: the older the observation is (lower i), the less weight it gives into the EWMA (given by $\lambda^{n-i}$) and thus receives less importance
 
 
-### Setting EWMA weights
 
-```{r}
+
+```{r, echo=FALSE}
 EWMAweights = function(lambda){ i = 1:250
 pi = (1-lambda)*lambda^(250-i) 
 return(pi)
 }
 ```
 
-### Computing VaR in Risk Metrics Approach
+### Risk Metrics Approach - Computing VaR and ES 
 
-```{r}
+Risk Metrics estimators. The Risk Metrics VaR is given by
+$$
+\operatorname{VaR}_{n, \alpha}\left(x_{1}, \ldots, x_{n}\right)=-M_{n}\left(x_{1}, \ldots, x_{n}\right)-S D^{E W M A}\left(x_{1}, \ldots, x_{n}\right) \Phi^{-1}(\alpha)
+$$
+The Risk Metrics ES is given by
+$$
+\mathrm{ES}_{n, \alpha}\left(x_{1}, \ldots, x_{n}\right)=-M_{n}\left(x_{1}, \ldots, x_{n}\right)+\frac{S D^{E W M A}\left(x_{1}, \ldots, x_{n}\right)}{\alpha} \Phi^{\prime}\left(\Phi^{-1}(\alpha)\right)
+$$
+Interpretation. The Risk Metrics VaR and ES coincide with the VaR and ES of a normal random variable with mean $M_{n}\left(x_{1}, \ldots, x_{n}\right)$ and variance $V^{E W M A}\left(x_{1}, \ldots, x_{n}\right)$
+
+
+```{r, echo=FALSE}
 rmVaR = function(x,lambda,alpha){
 n = length(x)
 m = sum(x)/n
@@ -753,7 +866,7 @@ return(r)
 
 ### Computing ES in Risk Metrics Approach
 
-```{r}
+```{r, echo=FALSE}
 compute_rmVaR = function(x,n,lambda,alpha){ N = length(x)-n+1
 r = rep(0,N)
 for (i in 1:N){
@@ -769,7 +882,7 @@ return(r)
 
 ![Plot title. ](Sheet_insertimage_11.png)
 
-# Estimation of VaR and ES: Simulation Approach
+# Estimation of VaR and ES: Simulation Approach (Monte Carlo)
 
 ## Generating distribution using quantiles
 
@@ -786,9 +899,9 @@ This process is called **"quantile inversion"**
 
 Idea: By taking (upper) quantile of a DF F to a uniform random variable, we obtain a random variable with the same distribution F.
 
-That shows that if we want to simulate realizations of a random variable with distribution F, it suffices to apply the upper quantile of F to simulated realizations of a uniform random variable.
+** Take away from quantile inversion: shows that if we want to simulate realizations of a random variable with distribution F, it suffices to apply the upper quantile of F to simulated realizations of a uniform random variable.**
 
-## The simulation approach
+# The simulation approach - Estimating VaR and ES
 
 The idea is that if we have a set of reutrns Z, even if we konw their distribution, it's no trivial to know distribution of the whole set X. That is why we combine them with *f*, the DF from before.
 
@@ -805,9 +918,20 @@ $$
 $$
 x_{i}^{k}=f\left(z_{i}^{k, 1}, \ldots, z_{i}^{k, m}\right) .
 $$
-Remark. Note that we have to ensure independence also across the different iterations.
+Remark. Note that we have to ensure independence also across the different iterations. \linebreak
 
-Then we perform VaR and ES for each iteration *h* and average across all iterations.
+Then we perform VaR and ES for each iteration *h* and average across all iterations. \linebreak
+
+Simulation-based estimators. A simulation-based VaR estimator has the form \linebreak
+$$
+\mathrm{VaR}_{s, \alpha}^{\operatorname{sim}}=\frac{1}{h} \sum_{k=1}^{h} \operatorname{VaR}_{s, \alpha}\left(x_{1}^{k}, \ldots, x_{s}^{k}\right)
+$$
+A simulation-based ES estimator has the form
+$$
+\mathrm{ES}_{s, \alpha}^{\operatorname{sim}}=\frac{1}{h} \sum_{k=1}^{h} \mathrm{ES}_{s, \alpha}\left(x_{1}^{k}, \ldots, x_{s}^{k}\right)
+$$
+Interpretation. For each of the $h$ iterations we simulate $s$ realizations of $X$ as described in the preceding slide and compute the corresponding risk estimates by using one of the estimation approaches discussed so far. At the end we average across all iterations. This is the basic idea behind Monte Carlo.
+
 
 #### Shocked normal relative returns
 
@@ -817,9 +941,9 @@ We set $\varepsilon = 2.5%$ and take EWMA weights corresponding to $\lambda = .9
 
 Interpretation: We assume that X follows a normal distr. subject to external shocks with probability 1%. The shock lowers relative returns by *2.5%*. Note that X is not normal.
 
-### Simulation VaR
+### Simulation VaR and ES (code hidden)
 
-```{r}
+```{r, echo=FALSE}
 
 simVaR = function(x,h,s,lambda,alpha){
 m = sum(x)/length(x)
@@ -849,7 +973,7 @@ return(r)
  simulatedVaR = compute_simVaR(x,250,10,500,0.99,0.01)
 ```
 
-```{r}
+```{r, echo=FALSE}
 simES = function(x,h,s,lambda,alpha){
 m = sum(x)/length(x)
 sd = sqrt(sum(EWMAweights(lambda)*(x-m)^2))
@@ -882,7 +1006,7 @@ simES2 = compute_simES(x,250,10,500,0.99,0.025)
 
 ![Plot title. ](Sheet_insertimage_15.png)
 
-# Estimation VaR and ES - Conditional Approach
+# Conditional Approach - Estimation VaR and ES
 
 So far, we assumed i.i.d. Empirically we know wolatility clusters, so no good.
 
@@ -951,13 +1075,13 @@ $$
 This property is called conditional heteroskedasticity: the dependence across $X_{t}$ nakes the flow of information relevant to determine their variance, which varies ser time as new information becomes available.
 
 
-## Risk Factor Mapping
+# Risk Factor Mapping
 
 ![Plot title. ](Sheet_insertimage_21.png)
 
-Linearization is regression
+Linearization (risk factor mapping) is a regression (just as F-F) and allows us to **express the return of a position as lin. combination of the risk factors changes**. Coefficients are called **greeks**.
 
-### Delta VaR and ES
+## Delta VaR and ES
 
 Definition. Let $\alpha \in(0,1)$ and set $X_{t}=\frac{V_{t}-V_{0}}{V_{0}} .$ The Delta VaR is given by
 $$
@@ -1027,7 +1151,7 @@ $$
 $$
 In this case, we could rely on the estimation of $\operatorname{VaR}_{\alpha}\left(X_{s}\right)$ and derive the estimates of $\operatorname{VaR}_{\alpha}\left(X_{t}\right)$ by exploiting the above link.
 
-Easy interpretation: if we want longer horizons, because of the time thing, we esimate a shorter, i.e. safer VaR and then transform it to longer horizon with the distribution. In practice, it is done by the square-root rule
+**Easy interpretation**: if we want longer horizons, because of the time thing, we esimate a shorter, i.e. safer VaR and then transform it to longer horizon with the distribution. In practice, it is done by the square-root rule
 
 #### Square root rule
 
@@ -1044,6 +1168,9 @@ $$
 \mathrm{ES}_{\alpha}\left(X_{t}\right)=\sqrt{\frac{t}{s}} \mathrm{ES}_{\alpha}\left(X_{s}\right)
 $$
 
+
+ \pagebreak
+ 
 ## Overview
 
 
@@ -1070,7 +1197,7 @@ $$
 ![**Risk factor mapping**](Sheet_insertimage_26.png)
 
 
-
+\pagebreak
 
 # Backtesting under VaR and ES
 The term **backtesting** is a *process of assesing if ex-ante estimation are aligned with ex-post observations*.
@@ -1087,7 +1214,7 @@ $$
 - Assume that $X$ materializes into $x$.
 - We want to use $x$ to select the best model out of $\hat{F}_{\left(x_{1}, \ldots, x_{n}\right)}^{(1)}, \ldots, \hat{F}_{\left(x_{1}, \ldots, x_{n}\right)^{-}}^{(m)}$
 
-By doing backtest for all models, we look which performs the best. More specifically, we are selecting our model **based on the performance of the risk measure $\rho$ .
+By doing backtest for all models, we look which performs the best. More specifically, we are selecting our model **based on the performance of the risk measure $\rho$ .**
 
 **Question:** How to decide which model is better?
 
@@ -1100,7 +1227,7 @@ Setup. Let $\rho: \mathcal{X} \rightarrow[-\infty, \infty]$ be a law-invariant r
 - Assume that $X$ materializes into $x$.
 - We want to use $x$ to validate the choice of $\widehat{F}_{\left(x_{1}, \ldots, x_{n}\right)}$ or not.
 
-We compare ex-post observations with ex-ante model forecasts to assess whether our model assumption should be kept or not. This is **model valiatoin**. 
+We compare ex-post observations with ex-ante model forecasts to assess whether our model assumption should be kept or not. This is **model validation**. 
 
 **Question:** How to decide whether the model is validaated or not? 
 
@@ -1119,9 +1246,11 @@ $$
 $$
 Moreover, the infimum is attained at any $\alpha$ -quantile of $X$.
 
-** Intepreation**: VaR is the minimizer and ES is the results. That also leads to the fact that ES is not elicitable.
+**Intepreation**: If $\rho$ is elicitable, the $\rho(X)$ is the **minimizer** of a suitable "expected error". Basically comparing the computed and historical Cap. Req, where the diff is the error.
 
-```{r}
+VaR is the minimizer and ES is the results. That also leads to the fact that ES is not elicitable.
+
+```{r, echo=FALSE}
 compute_scoreVaR = function(x,risk,n,alpha){ N = length(x)-n+1
 s = rep(0,N)
 for (i in 1:N){
@@ -1173,7 +1302,7 @@ can be used as a proxy for $\mathbb{E}[p(X, y)]$ for every forecast $y \in \math
 
 VaR is identifiable, ES is not.
 
-```{r}
+```{r, echo=FALSE}
 
 
 compute_penaltyVaR = function(x,risk,n,alpha){ N = length(x)-n+1
@@ -1198,7 +1327,7 @@ We can use a "scoring function" that is yero on average in correspondence of ES.
 
 ![Plot title. ](Sheet_insertimage_30.png)
 
-```{r}
+```{r, echo=FALSE}
 
 compute_scoreES = function(x,risk1,risk2,n,alpha){ N = length(x)-n+1
 s = rep(0,N)
