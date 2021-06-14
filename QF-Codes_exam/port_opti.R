@@ -15,6 +15,7 @@ cov_mat =  array(c( col1, col2, col3), dim = c(3,3)) #merge the columns together
 
 mu = t(t(c(0.05, 0.25, 0.1))) #matrix of the expected returns
 
+
 wts <- runif(n = length(col1), min=-1,max=2) # generating random weights first for each stock, just a placeholder
 
 wts <- wts/sum(wts) # just scaling by itself to sum up to 1
