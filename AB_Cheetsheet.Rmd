@@ -7,7 +7,7 @@ output:
     df_print: paged
 ---
 
-# Introduction
+## Introduction
 
 Firms can get financing:
 -directly by issuing secutiries
@@ -46,6 +46,7 @@ where $\rho \leq 1$ is the discount rate and $\pi$ is the probability of being i
 $$
 \text { The efficient line: }\left(C_{1}, C_{2}\right) \text { such that } \pi C_{1}+(1-\pi) \frac{C_{2}}{R}=1
 $$
+
 ### Autarky
 
 Autarky = no trade betweens agents, full economic indepence.
@@ -164,7 +165,7 @@ $$
 $$
 Hence, the pledgeable income is $Y-\frac{B}{\Delta p}$
 
-### Ledner's Participation constraint
+### Lender's Participation constraint
 
 The participation constraint sets the conditions that havet o be dsatisfied so that the principal wants to participate
 
@@ -184,3 +185,1438 @@ $$
 - $\bar{A}>0$ when the NPV of the project $\left(p_{H} Y-I\right)$ is lower than the informational rent of the borrower $p_{H} \frac{B}{\Delta p}$
 
 
+
+## Indirect finance: Role of Banks - Added monitoring
+
+Monitoring decreases the private benefit of selecting the bad project from $B$ to $b$, with $b<B$
+Monitoring induces a fixed cost $c$
+Monitoring allows to reduce informational rents of borrowers from $\frac{P_{H}}{\Delta p} B$ to $\frac{P_{H}}{\Delta p} b$
+We assume that monitoring is efficient for lenders:
+$$
+c \leq \frac{p_{H}}{\Delta p}(B-b)
+$$
+
+The borrowers' $I C C$ is now
+$$
+\begin{array}{l}
+p_{H}(Y-R) \geq p_{L}(Y-R)+b \\
+\Leftrightarrow R \leq Y-\frac{b}{\Delta p}
+\end{array}
+$$
+
+The pledgeable income becomes $Y-\frac{b}{\Delta p}$
+- Bank's Participation Constraint ( $P C$ )
+$\underbrace{p_{H} R}_{\text {Expected return on assets }} \geq \underbrace{I-A+c}_{\text {Amount invested plus monitoring cost }}$
+
+Therefore, a market for loans exists if and only if both the (ICC) and (PC) can be satisfied
+It implies
+$$
+\begin{array}{r}
+I-A+c \leq p_{H}\left(Y-\frac{b}{\Delta p}\right) \\
+\Leftrightarrow A \geq A=I+c-p_{H}\left(Y-\frac{b}{\Delta p}\right)
+\end{array}
+$$
+The assumption $c+\frac{p_{H} b}{\Delta p} \leq \frac{p_{H} B}{\Delta p}$ implies that $\underline{A} \leq \bar{A}$
+
+### Direct vs indirect finance
+
+Only well-capitalized firms $(A \geq \bar{A})$ finance their investment directly with bonds. Firms with intermediate capitalization $(A \leq A<\bar{A})$ invest with the help of monitoring, and undercapitalized firms $(A<A)$ cannot invest at all.
+
+#### Q: Why not only pay for monitoring and channel funds ourselves? A: Banks need to have skin in the game
+
+- First Implication: Access to external funds should be more restricted/costly for small and opaque firms, for which the moral hazard problem is more severe
+- Second Implication: The monitoring role of banks decreases the moral hazard problem $\Rightarrow$ borrowing from banks should be considered as a positive signal by financial markets
+- Third Implication: By monitoring borrowers, banks collect information on them, making their relationship valuable $\Rightarrow$ the end of a borrower-lender relationship should have a negative effect on borrowers
+
+
+#### Q: Why are banks financed by deposits? A:
+
+Three possible reasons: 
+
+- Economies of Scope: Transactions accounts, by providing ongoing data on borrowers' activities, help banks monitor borrowers
+- Monitoring the monitor: Deposit taking activities induce that banks are monitored more efficiently than typical creditors (by depositors or regulators)
+- Funding Stability: The relative stability of deposits allows banks to invest in illiquid assets (loans)
+
+# Deisgn of a loan contract
+
+## External finance
+
+$$
+\begin{array}{c|c|c} 
+& \begin{array}{c}
+\text { Fixed } \\
+\text { Payments }
+\end{array} & \begin{array}{c}
+\text { Variable } \\
+\text { Payments }
+\end{array} \\
+\hline \begin{array}{c}
+\text { Low } \\
+\text { Marketability }
+\end{array} & \text { Loans } & \text { Private Equity } \\
+\begin{array}{c}
+\text { High } \\
+\text { Marketability }
+\end{array} & \text { Bonds } & \text { Shares }
+\end{array}
+$$
+
+(CDS is an exception, which merges low and high marketability) \linebreak
+
+One cannot write a **complete contingent** contract with *all* possible scenarios - costly. $\Rightarrow$ Under information asymmetries, the debt contract is the most efficient incentive compatible contract
+
+- There is an information asymmetry between banks and entrepreneurs on the final performance of projects (the latter is observed only by entrepreneurs)
+- Entrepreneurs may have incentives to manipulate cashflows - not to reveal the real state of the world - to reduce the amount of repayment
+- However, by incurring a cost, banks can audit the net value of the firm to verify the cashflows. Hence, there is costly state verification
+$\Rightarrow$ Result: Under costly state verification, the optimal financing mechanism is a standard debt contract
+
+### Cashflow manipulation
+
+Cashflow manipulation may arise if
+(1) The agent's and the principal's incentives are not perfectly aligned
+(2) The principal cannot directly observe the outcome of the agent's actions, which are reported by the latter
+
+Under these conditions, the agent may have incentives to manipulate the reports on the outcome of his actions.
+
+The financing contract can be described as
+- A repayment function $\hat{y} \longmapsto R(\hat{y})$ representing the payment to the lender for each return $\hat{y}$ reported by the borrower
+- An auditing rule: defined by a set $\mathbb{A}$ of reports of the borrower for which the lender undertakes the costly audit
+$$
+\begin{array}{ll}
+\hat{y} \in \mathbb{A}: & \text { Audit } \\
+\hat{y} \notin \mathbb{A}: & \text { No Audit }
+\end{array}
+$$
+- A penalty $P(y, \hat{y})$ possibly paid by the borrower if the audit reveals that $y \neq \hat{y}$
+
+- To induce truth telling, the penalty function $P(y, \hat{y})$ should be
+- $=y$, i.e as large as possible, for $\hat{y} \neq y$ (when the outcome reported by the borrower is not the true outcome)
+- null for $\hat{y}=y$ (when the borrower has reported the true outcome)
+- The repayment function is:
+- necessarily constant in the no-audit region $(\hat{y} \notin \mathbb{A}) .$ We denote that constant by $R$
+$\Rightarrow$ Otherwise the borrower could cheat by announcing the message that corresponds to the minimum repayment in the no-audit zone
+- not larger than $R$ in the audit region $(\hat{y} \in \mathbb{A})$
+$\Rightarrow$ Otherwise the borrower will have an incentive to report a return in the non audit region and repay $R$
+
+### Efficient Incentive compatible contract
+
+
+An incentive compatible contract $\left(R^{*}(.), \mathbb{A}^{*}\right)$ is efficient iff:
+$$
+\left\{\begin{array}{l}
+\text { (i) } \forall y \in \mathbb{A}^{*}: R^{*}(y)=\min \left(y, R^{*}\right) \\
+\text { (ii) } \mathbb{A}^{*}=\left\{y \mid y<R^{*}\right\} \text { , i.e. an audit will take place } \\
+\text { only if reimbursement is less than } R^{*}
+\end{array}\right.
+$$
+i.e. any efficient incentive compatible loan contract is a standard debt contract
+
+#### Paradox of audition
+
+The paradox of auditing:
+- If the contract is incentive compatible, the lender knows that the borrower tells the truth
+$V$
+- Then auditing is useless (ex-post)
+- But without auditing the borrower would under-report
+$\Rightarrow$ Commitment on auditing is needed
+
+#### Way to credit rationing
+
+- When interest rates increase, the probability of default and thus the expected auditing cost increases
+- expected return to a loan may decrease when interest rates increase
+-some borrowers may be credit rationed: lenders cannot ask them to pay higher interest rates without decreasing the expected return to the loan
+
+## Covenant and collateral
+
+### Covenant definiton 
+
+A set of rules restricting a borrower's flexibility to take some actions and/or defining conditions allowing a lender's intervention. (not allowing to pay dividends or restric CAPEX)
+
+### Collateral definition
+
+Property or other assets that a borrower offers a lender to secure a loan. If the borrower stops making the promised loan payments, the lender can seize the collateral to recoup its losses.
+
+### Roles of Collateral
+
+- Screening Device: riskier borrowers are going to take loans with higher interest rates but lower collateral
+- Incentive to Monitor: Collateral gives banks incentives to monitor borrowers
+- Monitoring Device: Collateral reduces the moral hazard problem, because the borrower has more skin in the game. Hence it may relax credit constraints.
+
+**Plot on slide 39 lecture 3**
+
+Expected pay-off to the borrower:
+$$
+\begin{array}{ll}
+p_{H}(Y-R)-\left(1-p_{H}\right) C & (\text { good borrower }) \\
+p_{L}(Y-R)-\left(1-p_{L}\right) C & \text { (bad borrower) } \\
+0 \cong P_{H}<P_{L} &
+\end{array}
+$$
+
+
+- A pooling equilibrium: the different types choose the same contract without collateral.
+- A separating equilibrium: the different types choose different contracts. Good borrowers take a contract with a lower $R$ and a collateral $C$. Bad borrowers take a contract with a higher $R$ but no collateral.
+$\Longrightarrow$ The existence of a separating equilibrium depends on the distribution of types. $\Rightarrow$ Collateral relaxes the incentive compatibility constraints and hence reduces credit rationing
+
+
+#### Borrowers' Incentive Compatibility Constraint (IC)
+
+$$
+\begin{array}{c}
+\underbrace{p_{H}(Y-R)-\left(1-p_{H}\right) C}_{\text {Borrower's payoff with the good project }} \geq \underbrace{p_{L}(Y-R)+B-\left(1-p_{L}\right) C}_{\text {Borrower's payoff with the bad project }} \\
+\Leftrightarrow R \leq \underbrace{Y-\frac{B}{\Delta p}+C}_{\text {Pledgeable Income }} \rightarrow
+\end{array}
+$$
+$\Rightarrow$ Pledgeable income is higher when there is collateral
+
+#### Lender's Participation Constraint (PC)
+
+$$
+\underbrace{p_{H} R} \quad+\underbrace{\left(1-p_{H}\right) C}_{ } \geq \underbrace{I-A}_{ }
+$$
+$\begin{array}{lll}\text { Lender's return to the good proj. } & \text { Return from collateral } & \text { Lender's investment }\end{array}$
+$\Rightarrow$ Participation constraint is relaxed when there is collateral
+
+- A market for loans exists if and only if both the (IC) and (PC) constraints are satisfied
+- It implies
+$$
+\begin{array}{r}
+I-A \leq p_{H}\left(Y-\frac{B}{\Delta p}+C\right)+\left(1-p_{H}\right) C \\
+\Leftrightarrow A \geq \bar{A}=I-p_{H}\left(Y-\frac{B}{\Delta p}+C\right)-\left(1-p_{H}\right) C
+\end{array}
+$$
+$\Rightarrow$ A larger fraction of borrowers have access to loans when there is collateral.
+Intuition: when the size of the loan is variable, borrowers can borrow a larger amount with collateral.
+
+# Credit rationing
+
+The supply of credit does not seem to be increasing with (nominal) interest rates: demand and supply curves do not always intersect, which generates situation of **credit rationing**
+
+### Backward bending supply of credit
+
+When interest rates increase, the residual cash flow that goes to the borrower is reduced
+
+As a consequence:
+
+- Safe entrepreneurs might be discouraged from applying for credit relatively to risky ones: Adverse selection
+- Default may increase, which increases the cost of verification for the bank: Costly state verification
+- Entrepreneurs might pursue private interests rather than try to maximize firm's value: Moral hazard \linebreak
+
+Therefore, the expected return to the bank may decrease
+
+### Reasons: 
+
+Credit rationing may be due to
+
+- Caps on interest rates
+- Bans on price discrimination
+- Restricted access to credit markets $-E M$
+
+In Stiglitz and Weiss (1981), however, credit rationing is caused by asymmetric information and arises in equilibrium
+
+### Individual credit rationing
+
+Individual credit rationing occurs whenever some borrower's positive net present value project is not financed
+
+- Within a group of heterogeneous borrowers, some obtain credit, while others do not, depending on observable characteristics
+- For example, in a model of moral hazard, borrowers with low net worth have no access to credit.
+
+### Equilibrium credit rationing
+
+Situation where the total demand of credit is higher than the supply, but banks do not increase interest rates
+
+- Within a group of observationally similar borrowers, some obtain credit, while others do not
+- Constrained borrowers will not receive credit even if they are willing to pay a higher interest rate
+
+## Adverse selection and Moral Hazard under Credit Rationing
+
+Adverse selection arises if:
+(1) There are heterogeneous borrowers
+(2) The bank cannot observe the type of each borrower
+Bad borrowers may have more incentives to borrow than good ones.
+
+Under perfect information, banks observe borrower types:
+
+- Good borrowers repay
+$$
+R_{G}=\frac{I}{p_{G}}
+$$
+e Bad borrowers repay
+$$
+R_{B}=\frac{I}{p_{B}}
+$$
+- Lenders make zero profits
+
+Under information asymmetry, banks do not observe borrower types, but observe the proportion of good types:
+
+- The repayment $R$ is the the same for good and bad borrowers
+- The expected profit of lender is
+$$
+E(\Pi(R))=\left(\alpha p_{G}+(1-\alpha) p_{B}\right) R-I
+$$
+- Limited liability implies $R \leq Y$
+
+- The maximum repayment that can be asked by banks is $Y$, in which case the lender's expected profit is
+$$
+E(\Pi(Y))=\left(\alpha p_{G}+(1-\alpha) p_{B}\right) Y-I
+$$
+- There is no credit rationing if :
+- $p_{B} Y-I \geq 0$, i.e. the NPV of bad projects is positive
+- $p_{B} Y-I \leq 0, p_{G} Y-I \geq 0$, and $\alpha \geq \alpha^{*}$, with $\alpha^{*}=\frac{1-p_{B} Y}{\left(p_{G}-P_{B}\right) Y}$
+$\Longrightarrow$ the bank makes losses on bad projects, but these losses are compensated by profits made on good projects if and only if the share of good projects is large enough
+
+- Conversely, if $\alpha<\alpha^{*}$ the market breaks down
+- Good borrowers cannot finance their projects
+$\Rightarrow$ There is credit rationing
+
+### Cross-sibsidization
+
+When the credit market is active in spite of adverse selection, there is cross-subsidization because:
+
+- Lenders make zero profits, therefore
+$$
+R=\frac{1}{\alpha p_{G}+(1-\alpha) p_{B}}
+$$
+- $R_{G} \leq R \leq R_{B}$
+- Good (bad) borrowers pay higher (lower) interest rates than they would in the absence of information asymmetries
+
+$\Rightarrow$ Average loan quality deteriorates if the interest rate raises
+- Moral Hazard: Borrowers tend to choose riskier projects
+- Adverse Selection: "Good" borrowers stop applying
+
+### Model structure
+
+Banks compete and offer the following loan contract:
+
+- Each borrower needs to put down collateral $C$ upfront in order to borrow $B$ at an interest rate $r$
+- As the banks cannot observe the projects' risk $\theta$ all borrowers face the same interest rate $r$
+e By assumption: All borrowers provide the same collateral $C$
+- **Limited liability**: If the collateral and the project's return are insufficient to pay back the loan with interests, i.e.
+
+
+$$
+C+R \leq(1+r) B
+$$
+
+#### Return profiles (slides 28+)
+
+Borrower's return profile:
+$\pi(R, r)=\max [R-(1+r) B,-C]$
+Bank's return profile:
+$\rho(R, r)=\min [B(1+r), R+C]$
+
+Borrower's return profile equals the one of holding a call option:
+
+- Full upward risk
+- Limited downward risk (Limited liability)
+
+Bank's return profile equals the one of selling a put option:
+
+- Limited upward risk
+- Full downward risk
+
+Increase in risk $\theta_{L} \rightarrow \theta_{H}$ :
+
+- Extreme returns get more likely
+- Borrower benefits from the increased upward risk
+- Bank bears the higher downward risk
+$\Rightarrow$ Borrower's position improves at the bank's expense
+$\Rightarrow$ Option value increases
+
+**Implications**:
+
+(1) Moral Hazard (ex-post):
+Borrowers have an incentive to take higher risks
+(2) Adverse Selection (ex-ante):
+Borrowing is more attractive for risky borrowers
+
+### Bank charging higher interest rates has 2 contrarian effects
+
+(1) Higher interest rates directly increase the bank's returns
+(2) By aggravating moral hazard and adverse selection, however, higher interest rates impair the average loan quality
+$\Rightarrow$ Banks' expected returns are-nonmonotonic in $r$
+
+### Summary
+
+Higher collateral requirements help to align the lenders' and borrowers' interests:
+
+- If the borrowers have to put down more collateral (equity capital) their incentive for choosing a risky project is lower
+$\Rightarrow$ Borrowers can offer higher interest rates without getting suspicious of taking excessive risks
+$\Rightarrow$ Credit rationing can be avoided if the banks' return function $\rho(r)$ is upward sloping in the relevant interest rate area
+
+The same argument justifies capital regulation of banks
+Higher capital requirements lower the banks incentives to take excessive risks at the expense of the depositors, the deposit insurance, and/or the tax payer
+
+## Costly state verification under Credit Rationing
+
+Some bla bla from slide 47
+
+- Collateral can be used as a screening or a monitoring device
+- Credit registers reduce information asymmetries
+- Microcredit, by decreasing monitoring costs, can improve access to credit in developing economies
+
+## Microcredit: CR in EM
+
+- Loan rates are often of the order of $60 \%$ or above
+- Sizeable gap between loan rates and deposit rates within the same region (often more than $20 \%$ ): intermediation costs take often one half of the income that could go to depositors
+- Extreme variability in the loan rate for similar borrowers within the same region
+- But low levels of default
+- Richer people borrow more and pay lower interest rates
+- Bigger loans are associated with lower interest rates
+$\Longrightarrow$ All these facts are consistent with a high level of credit rationing and high monitoring costs (models of costly state verification/monitoring)
+
+### Microcredit Key ingredients
+
+-Peer monitoring and peer pressure: Neighbors, friends or relatives can keep an eye on you without going out their way (cost efficient) and punish you for default in more effective ways (reputation)
+- Repeated interactions: Once people are getting credit at below market rates, the rents they are getting can be used to further improve their incentives: "You can have another loan on these great terms next period if you behave this time"
+- Frequent repayments: Weekly repayments reduce information asymmetries
+
+### MC Model
+
+- Group lending: potential borrowers are asked to join a group of friends or neighbors
+- Joint liability: a group of borrowers is given a loan with the threat that, if any group member defaults, all of them will be excluded from future loans
+- Frequent repayments: repayments start soon after loan disbursement and takes place weekly (most common)
+
+# Bank competition
+
+- Banks are engaged in price competition in both savings and credit markets 
+- Empirical evidence suggests that competition is imperfect, i.e. banks can enjoy market power
+
+## Oligopolistic competition (Cournot-nash)
+
+Each bank incurs the costs of managing deposits and loans:
+$$
+C\left(D_{i}, L_{i}\right)=\gamma_{D} D_{i}+\gamma_{L} L_{i}
+$$
+
+The banking sector is faced with demand for loans $L\left(r_{L}\right)$  and supply of deposits $D\left(r_{D}\right)$ 
+Assumption: $L^{\prime}\left(r_{L}\right)<0$ (downward slope) and $D^{\prime}\left(r_{D}\right)>0$ (upward slope)
+
+### Bank's profits:
+
+$$
+\begin{array}{l}
+\pi\left(D_{i}, L_{i}\right)=\left(1+r_{L}\right) L_{i}+(1+r)\left(D_{i}-L_{i}\right)-\left(1+r_{D}\right) D_{i}-C\left(D_{i}, L_{i}\right) \\
+=\underbrace{\left[r_{L}(L)-r\right] L_{i}}_{\text {intermed. margins on loans }}+\underbrace{\left[r-r_{D}\right] D_{i}}_{\text {intermed. margins on deposits }}-\underbrace{C\left(D_{i}, L_{i}\right)}_{\text {intermed. costs }}
+\end{array}
+$$ 
+
+A Cournot-Nash equilibrium of the banking sector is an N-tuple of couples $\left(D_{i}^{*}, L_{i}^{*}\right)_{i=1 . . N}$ and the couple $\left\{r_{D}^{*}, r_{L}^{*}\right\}$, such that:
+(1) for every $i$, $\left(D_{i}^{*}, L_{i}^{*}\right)$ maximizes the profit of bank $i$, taking the volume of deposits and loans of other banks as given;
+(-) savings and credit markets clear, i.e.,
+$$
+\begin{array}{l}
+\sum_{i=1}^{N} D_{i}^{*}=D\left(r_{D}^{*}\right) \\
+\sum_{i=1}^{N} L_{i}^{*}=L\left(r_{L}^{*}\right)
+\end{array}
+$$
+Maximisation on slide 12.
+
+- $\quad$ Monopoly $(N=1)$
+$$
+\begin{aligned}
+r-r_{D}^{*} &=\gamma_{D}+\frac{r_{D}^{*}}{\epsilon_{D}\left(r_{D}^{*}\right)} \\
+r_{L}^{*}-r &=\gamma_{L}+\frac{r_{L}^{*}}{\epsilon_{L}\left(r_{L}^{*}\right)}
+\end{aligned}
+$$
+Perfect competition $(N \rightarrow \infty)$
+$$
+r-r_{D}^{*}=\gamma D
+$$
+$$
+r_{L}^{*}-r=\gamma_{L}
+$$
+
+#### TAKEAWAY
+
+Intermediation margins are decreasing with the number of banks and with the elasticities of the demand for loans/supply of deposits.
+
+## Monopolistic competition
+
+Intermediation margins are decreasing with the number of banks and with the elasticities of the demand for loans/supply of deposits.
+
+$N$ banks locate themselves symmetrically on a circle with length 1
+The distance between any pair of banks is $1 / N$
+Banks finance themselves by deposits and invest in loans
+Deposit rate $r$ is exogenous, loan rate $r_{L}^{i}, i=1 . . N$, are optimally chosen by banks
+
+Circle thing on slide 20.
+
+The distance $\tilde{x}_{i}$ between a marginal borrower and bank $i$ satisfies:
+$$
+\begin{array}{l}
+\underbrace{\left(1+r_{L}^{i}\right) L+t \tilde{x}_{i}}_{\text {cost of borrowing from bank } i}=\underbrace{\left(1+r_{L}^{i+1}\right) L+t\left(\frac{1}{N}-\tilde{x}_{i}\right)}_{\text {cost of borrowing from bank } i+1} \\
+\qquad \tilde{x}_{i}=\frac{1}{2 N}+\frac{\left(r_{L}^{i+1}-r_{L}^{i}\right) L}{2 t}
+\end{array}
+$$
+
+- The volume of loans granted by bank i:
+$$
+L_{i}\left(r_{L}^{i}\right)=\left(\frac{1}{2 N}+\frac{\left(r_{L}^{i+1}-r_{L}^{i}\right) L}{2 t}+\frac{1}{2 N}+\frac{\left(r_{L}^{i-1}-r_{L}^{i}\right) L}{2 t}\right)
+$$
+- The profit of bank $i$ :
+$$
+\pi_{i}\left(r_{L}^{i}\right)=\left(r_{L}^{i}-r\right) L_{i}\left(r_{L}^{i}\right)
+$$
+Bank's problem:
+
+$$
+\max _{r_{L}^{i}}\left(r_{L}^{i}-r\right)\left(\frac{1}{N}+\frac{\left(r_{L}^{i+1}-2 r_{L}^{i}+r_{L}^{i-1}\right) L}{2 t}\right)
+$$
+
+FOC:
+$$
+\frac{1}{N}+\frac{\left(r_{L}^{i+1}+r_{L}^{i-1}-4 r_{L}^{i}+2 r\right) L}{2 t}=0
+$$
+$$
+\text { In equilibrium, all banks offer the same rates, i.e., } r_{L}^{i}=r_{L}^{i+1}=r_{L}^{i-1}
+$$
+
+FOC implies:
+$$
+r_{L}^{*}=r+\frac{t}{N L}
+$$
+All banks get the same profit:
+$$
+\pi\left(r_{L}^{*}\right)=\frac{t}{N^{2} L}
+$$
+
+#### TAKEAWAY 
+
+The loan rate and banks' profits are decreasing with the number $N$ of banks and increasing with $t$.
+
+## Competition and financial (in) stability
+
+e. Idea: competition among banks affects the riskness of bank assets
+$\Rightarrow$ affects financial stability
+
+Two alternative views (there's evidence for both):
+- competition-fragility view
+- competition-stability view
+
+### Fragility view:
+
+higher competition for deposit funding reduces banks' profit margins $\Longrightarrow$ banks choose higher asset risk $\Rightarrow$ financial stability is undermined
+
+### Stability view
+
+higher competition among banks reduces the loan rate $\Rightarrow$ reduces a borrower's incentives for excessive risk-taking $\Rightarrow$ financial stability improves
+
+### Reason for mixed evidence: Size
+
+Empirical evidence suggests that market power increases with a bank's size
+
+- Too-Big-To-Fail problem: large banks might be systemically important $\Longrightarrow$ anticipate ex-post government support (e.g. the financial crisis $2007-08) \Longrightarrow$ take higher risk ex-ante (moral hazard)
+- Conjecture: the true relationship between competition and financial stability might be hump-shaped
+
+$$
+\Rightarrow \text { Intermediate level of competition is optimal }
+$$
+### Measuring competition
+
+k-bank concentration ratios:
+$$
+C R(k)=\sum_{i=1}^{k} s_{i}
+$$
+where $s_{i}, i=1 . . k$ are the market shares of $\mathrm{k}$ -largest banks.
+Herfindahl-Hirschman index (measure of competition):
+$$
+H H I=\sum_{i=1}^{N} s_{i}^{2}
+$$
+where $N$ is the total number of banks.
+HHI varies between $1 / N$ (the same market share for all banks) and 1 (monopoly)
+
+### Measuring profitability
+
+Lerner index:
+$\frac{\text { Bank asset return - marginal costs }}{\text { Bank asset return }}$
+
+### Factors affecting competition
+
+- Entry/exit rules for domestic and foreign banks
+- Consolidation policy (mergers, spin-offs)
+- Activity restrictions, capital requirements
+- Too-Big-to-Fail guarantees
+
+### Beyond bank competition
+
+- shadow banks
+- fintech
+
+Shadow banking - credit intermediation involving entities and activities (fully or partially) outside the regular banking system
+
+Distinctive features:
+
+- no access to deposit insurance, no regulation
+- prevalence of short-term liabilities (repos, interbank loans)
+- high leverage
+
+Alternative finance - Direct lending between lenders and borrowers online, outside traditional financial intermediaries
+
+Pros
+
+- Attractive interest rates for both lenders and borrowers
+- Risk diversification
+- Access to credit for those who have been rejected by banks
+- Simplicity (online loan applications)
+
+Cons
+
+- Lending is unsecured: in most cases, lenders fully bear a risk of losses (in some cases, platforms may hold limited reserves to compensate lenders for losses)
+- Limited monitoring of borrowers (hard information only)
+- Potential for frauds and cyber-security threats
+
+Question: can the expansion of alternative finance totally disrupt traditional banking?
+Answer: very unlikely, banks have specific features that give them competitive advantage:
+
+- banks provide riskless deposits and payment services
+- banks perform monitoring of borrowers and manage exposure following a borrower's default (e.g. claiming collateral)
+- banks can use various funding sources to fund loans (i.e., access to money market and central bank liquidity)
+
+# Relationship banking
+
+long-term contractual relations between a bank and a costumer (the firm) as opposed to occasional contracts (transaction lending)
+
+## Assumption and characteristics
+
+- Customer-specific information: There exists some customer-specific information on the expected performance of the project
+- Information asymmetries: Customer-specific information is not publicly available and remains confidential
+- Monitoring: Banks obtain information on borrowers through monitoring and screening activities
+- Multiple interactions: Multiple interactions allow banks to benefit from intertemporal information reusability
+
+- The "bright side"": Relationships mitigate informational asymmetries between firms and banks
+$\Rightarrow$ Lower information asymmetries may imply less credit rationing and better loan terms, especially for small and opaque firms
+- The "dark side": Relationships create informational asymmetries between inside and outside banks
+
+Relationship banking matters for small firms because of **soft information**
+
+- Hard Information is information that can be quantified, automatically collected, stored and transmitted: income data, production costs etc. Hard information is when everyone agrees on its meaning
+
+- Soft Information is information that cannot be verified by anyone other than the agent who produces it: personal traits of a manager (hard working, ambitious etc.), probability of success of a project
+
+## Relationship banking and Credit Rationing
+
+- reduces information assymetries
+- foster flexibility in writing loan contracts (better loan terms)
+- accomodate an inter-temporal smoothing of contract terms (bargain and ripoff, lower rate in the beg.)
+- complementary to other sources of finance (relantionship with a reputable institution facilites funding, signaling)
+
+Crucial for small borrowers who face financeing constraints
+
+### The dark side 
+
+- The "hold up" problem: The proprietary information about borrowers that banks obtain give them an information monopoly
+- The soft-budget constraint problem: Firms have more incentives to renegotiate loans and to keep on negative NPV projects
+
+## The hold-up problem
+
+Bargain and rip-off
+
+The relationship bank has an informational advantage over the "outside" bank
+
+- If a firm switches to another bank in the interim stage, this new bank will have to invest $1+c$
+- The zero profit repayment required by the new bank is $R_{2}=\frac{1+c}{p}$
+- The zero profit repayment required by the relationship bank is $\frac{1}{p}$
+- However, the optimal strategy for the relationship bank is to align its offer $\Rightarrow$ the relationship bank extracts "informational rents":
+$$
+I R=\frac{1+c}{p}-\frac{1}{p}=\frac{c}{p}
+$$
+
+Result
+The incumbent bank uses its ex post monopoly power during the second period to extract informational rents.
+
+### First period cost of credit
+
+A firm that is funded by the same bank in both periods repays $R_{1}$ in the first period in case of success and $R_{2}$ in the second one in case of success. The bank's expected return is:
+$$
+p\left(R_{1}+p R_{2}\right)
+$$
+The bank invests 1 in the first period $+$ the monitoring cost $c$. If the project is successful (with probability $p)$, it also invests 1 in the second period. The total expected cost for the bank is:
+$$
+1+c+p
+$$
+Zero profit condition implies
+$$
+p R_{1}+p^{2} R_{2}=1+p+c
+$$
+
+Inserting $R_{2}=\frac{1+c}{p}$ into the bank's zero profit condition yields:
+$$
+p R_{1}+p(1+c)=1+p+c
+$$
+The first-period repayment required by the relationship bank is:
+$$
+R_{1}=\frac{1+c}{p}-c
+$$
+$R_{1}$ is strictly lower than $R_{2}$
+
+#### Results
+
+(1) The bank anticipates future informational rents
+(2) Competition among banks drives down the cost of credit at the initial stage of the relationship
+(3) Firms have access to subsidized credit early in their lives
+$\Rightarrow$ Access to subsidized credit can be critical for newly created firms. Hence future monopoly rents of banks can have benefits in the beginning of a relationship (nothing is black and white)
+
+Identification problem: "switcher" (good) may not be the same as "stayers" (bad)
+Composition issue - Selection Bias: Because of adverse selection.
+
+## Soft budget constraint
+
+- Definition: A soft budget-constraint problem arises whenever a borrower can extract ex-post a bigger loan than what would have been considered efficient ex-ante
+- There are soft budget constraint problems when the threat of termination is not credible: the borrower anticipates that he will be able to renegotiate
+- Ex-ante inefficiency: if renegotiation is too easy, borrowers may exert insufficient effort in preventing bad outcome from happening, or may exploit information asymmetries with the bank to invest in negative NPV projects ex ante.
+
+If the project is a bad project, the bank needs to decide:
+The optimal level of monitoring effort $e$
+Q To continue the project or not (invest again 1 or not)
+The bank chooses e to maximize $\left[e Y_{B}-\frac{e^{2}}{2}\right]^{\prime}=0$
+$$
+\Rightarrow e=Y_{B}
+$$
+
+$e$ is monitoring but also success probability (more monitoring = more succes prob)
+
+- Continuation is ex-post optimal for the bank if
+$$
+\begin{array}{c}
+e=Y B \\
+\begin{array}{c}
+\operatorname{Max}_{e}\left[e Y_{B}-\frac{e^{2}}{2}\right] \geq 1 \\
+\frac{Y_{B}^{2}}{2} \geq 1 \\
+\Leftrightarrow Y_{B}>\sqrt{2}
+\end{array}
+\end{array}
+$$
+- Whereas financing a bad project is ex ante not profitable if
+$$
+\underbrace{\frac{Y_{B}^{2}}{2}}_{\text {Total Cost }}<\underbrace{2}_{\text {r. }}
+$$
+Final return
+$$
+\Longleftrightarrow Y_{B}<2
+$$
+
+- $Y_{B}<\sqrt{2}$ : No continuation
+- $\sqrt{2} \leq Y_{B} \leq 2$ : Continuation even if the project is not profitable (ex-ante)
+e $Y_{B}>2$ : Project is continued and profitable ex-ante
+
+- Therefore, entrepreneurs, because of the private benefit $B$ they get when a project succeed, have incentives to undertake these negative NPV projects $\left(\sqrt{2} \leq Y_{B} \leq 2\right)$
+- Whereas the threat of termination would deter entrepreneurs from undertaking poor projects in the first place, banks cannot commit ex ante not to refinance them
+
+## Market finance summary
+
+- $Y_{B}<\sqrt{2}$ : Bad projects are never refinanced
+- $\sqrt{2} \leq Y_{B} \leq 2$ : Bad projects are not profitable (ex-ante) but they are refinanced in the centralized system (bank) and not in the decentralized system (market)
+$\Rightarrow$ Here market financing is better than bank financing due to the soft budget constraint
+- $Y_{B}>2$ : Bad projects are profitable and are always financed. However, probability of success is higher in the centralized system
+$\Rightarrow$ Here, bank financing is better than market financing due to a higher monitoring effort
+- Relationship banking, by reducing the threat of termination, may induce entrepreneurs to undertake ex-ante negative NPV projects
+
+## Competition and relationship banking
+
+- Negative Effect Competition may shorten banking relationships. Anticipating higher competition, banks may respond by reducing their relationship-specific investments
+- Positive Effect: Competition may elevate the importance of relationships as a distinct competitive edge. A more competitive environment may encourage banks to become more client-driven and customize services
+
+# Credit Risk
+
+## CDS
+
+To mitigate credit risk banks can either:
+
+(1) Sell the loan
+(2) Hedge the credit risk by using credit risk transfer instruments
+Hirtle (JFI, 2009): About $97 \%$ of all credit derivatives held by U.S. commercial banks in 2006 were Credit Default Swaps. LOL????
+
+CDS vs. Insurance
+
+- A credit default swap (CDS) contract is similar to an insurance contract where one party pays another party for protection from a particular event.
+- CDS differ from standard insurance contracts as a protection buyer does not need to hold the underlying asset and it may purchase protection that exceeds the value of its position in the underlying.
+
+
+### CDS Contract terms specifies
+
+(1) The parties: protection buyer and protection seller.
+(2) The reference entity on which credit risk protection is being purchased.
+(3) The maturity, which ranges from 2 to 10 years.
+(4) The definition of the credit event which triggers the "insurance" payment.
+(5) The CDS spread, i.e., the periodic payment made by the buyer to the seller.
+(6) The settlement type, i.e., physical or cash.
+
+### CDS characteristics
+
+- OTC
+- allow risk-sharing and risk-taking
+- allow for trading and epxloiting information (even pushing to default)
+- binding capital constrainst lead to using risk transfer instrumetns - CDS alleviate those and free capital
+- banks more likely to sell crappy loans and hedge the risks
+- CDS only removes the economic exposure to a borrower, but keeps the monitoring
+
+## Consequences of CDS
+
+Model the effect of CDS in a limited commitment model of credit. Predictions:
+
+- CDS acts as a commitment device: decrease strategic default.
+- Increased financing capacity: increase leverage.
+- Creditors will over-insure in equilibrium becoming empty creditors increase probability of default. Assumptions:
+
+- CDS payment only on bankruptcy
+- Restructuring is possible (debt-equity swaps)
+- Empty creditor effect priced into CDS spreads.
+
+### Empty creditors
+
+- CDS allow for hedging and speculative trading of credit exposure by creditors and other interested parties.
+- Creditors hold control rights and credit exposure under the debt contract.
+- CDS \& Debt: Exposure and control decoupled.
+- This allows for "empty creditors" which have an incentive, CDS payment, and ability to push the referenced firm into default.
+
+Slides 24-27 for a neat graphic
+
+Removing the Empty creditor, CDS spreads drop by 49-122 BP. The forcing a firm into default had been priced in.
+
+### Innovation
+
+- CDS affects innovation by increasing a CDS firm's risk-taking behaviour, which they argue is key for innovation.
+- CDS trading on a firm's debt increases its technological innovation output as measured by patents and patent citations.
+- CDS begins to trade on a firm's debt, the firm registers $14.8 \%$ more patents and receives $20.2 \%$ more citations on its patents compared to non-CDS firms.
+
+### Effect on firms with economic links to referenced firms
+
+- Firm's leverage is lower when it obtains a larger portion of its revenue from CDS referenced customers.
+- These firms achieve lower leverage ratios by issuing equity, which they do at a lower cost.
+- CDS trading on customers improves the information environment of suppliers.
+
+
+# Bank runs
+
+- A bank run is a situation in which depositors at a single bank wish to exchange their deposits for currency (\$). 
+- A bank panic is a situation in which depositors at many banks wish to exchange their deposits for currency.
+
+
+## Key concepts:
+
+(1) Asymmetric information: Depositors do not know exposure of banks to adverse shock
+(2) Fractional reserve system: A fraction of deposits is used for financing illiquid and risky loans
+(3) Sequential service constraint: Banks convert deposits into cash with a first-come, first-served principle
+
+## Panic-driven runs
+
+$$
+\text { Loans are illiquid assets: early liquidation is costly }
+$$
+
+- Under normal circumstances, depositors only withdraw deposits when they need to consume (they do not withdraw deposits at the same time)
+- If all depositors attempt to withdraw their funds simultaneously,
+a bank will run out of money
+- Rational behavior: if a depositor expects all other depositors to withdraw their funds, this depositor will rush to take his deposits out
+- Each depositor's incentive to withdraw funds depends on what the expect other depositors to do
+$\Rightarrow$ coordination failures $\Rightarrow$ panic-driven run
+
+- At $t=0$ agents are identical
+- At date $t=1$ there is a liquidity shock: a fraction $\pi$ of agents become impatient
+- Impatient agents consume $C_{1}$ in period $t=1 \Longrightarrow$ The utility of impatient agents is $u\left(C_{1}\right)$
+- Patient agents consume $C_{2}$ in the next period $\Longrightarrow$ the utility of patient agents is $u\left(C_{2}\right)$
+- The ex-ante expected utility of each agent is:
+$$
+u=\pi u\left(C_{1}\right)+(1-\pi) \rho u\left(C_{2}\right)
+$$
+- NB: For simplicity let's assume $\rho=1$
+
+### Optimal allocation
+
+$$
+\left\{\begin{array}{r}
+1-I=\pi \cdot C_{1} \\
+R I=(1-\pi) \cdot C_{2}
+\end{array}\right.
+$$
+
+The maximization problem is:
+$$
+\begin{aligned}
+& \operatorname{Max}_{\perp} \pi u\left(C_{1}\right)+(1-\pi) u\left(C_{2}\right) \\
+\Leftrightarrow & \operatorname{Max}_{I} \pi u\left(\frac{1-I}{\pi}\right)+(1-\pi) u\left(\frac{R I}{1-\pi}\right)
+\end{aligned}
+$$
+The optimal allocation satisfies (FOC):
+$$
+-u^{\prime}\left(C_{1}^{*}\right)+R u^{\prime}\left(C_{2}^{*}\right)=0 \Longleftrightarrow
+$$
+$$
+-u^{\prime}\left(\frac{1-I^{*}}{\pi}\right)+R u^{\prime}\left(\frac{R I^{*}}{1-\pi}\right)=0
+$$
+
+### Results
+
+There are two possible equilibria:
+
+- efficient equilibrium: patient depositors trust the bank and withdraw only at $t=2$
+- "sunspot" equilibrium: all depositors withdraw at $t=1$ due to a coordination failure (panic-driven bank run)
+
+## Information driven runs
+
+There are two types of agents:
+
+- Early consumers yield utility only from consumption at date $t=1$ :
+$u\left(C_{1}\right)=C_{1}$
+- Late consumers yield utility only from consumption at date $t=2$ :
+$u\left(C_{2}\right)=C_{2}$
+- At date $t=0$ agents do not know their type
+- Share of early types is stochastic: $\pi \in\left\{\pi_{L}, \pi_{H}\right\}$
+- We assume: $\pi_{H}>\pi_{L}$ and $\operatorname{Prob}\left(\pi=\pi_{L}\right)=r$
+
+The decision to withdraw for uninformed late cansumers depends on the state of the world:
+
+
+$$
+\begin{array}{|l|c|c|}
+\hline \text { State of the world } & \text { Probability } & \text { Observed withdrawals } \\
+\hline S_{1}: \tilde{\pi}=\pi_{L}, \tilde{R}=X & r p & \pi_{L} \\
+S_{2}: \tilde{\pi}=\pi_{L}, R=0 & r(1-p) & \pi_{L}+\bar{a} \\
+S_{3}: \tilde{\pi}=\pi_{H}, R=X & (1-r) p & \pi_{H} \\
+S_{4}: \tilde{\pi}=\pi_{H}, R=0 & (1-r)(1-p) & \pi_{H}+\bar{\alpha} \\
+\hline
+\end{array}
+$$
+Let's assume that $\pi_{L}+\bar{\alpha}=\pi_{H}$
+
+- State $S_{1}:$ Observed withdrawals $=\pi_{L}$
+- Infers that $\tilde{R}=X$
+- Does not withdraw
+Only early consumers withdraw at $t=1$ in $S_{1}$
+- State $S_{4}$ : Observed withdrawals $=\pi_{H}+\bar{\alpha}$
+- Infers that $\tilde{R}=0$
+- Withdraws
+All consumers withdraw at $t=1$ in $S_{4}$
+
+- States $S_{2}$ and $S_{3}:$ Observed withdrawals $=\pi_{L}+\bar{\alpha}=\pi_{H}$
+- Possibility 1: $\tilde{\pi}=\pi_{L}$ and $R=0$, probability $\frac{r(1-p)}{r(1-p)+(1-r) p}$
+- Possibility 2: $\tilde{\pi}=\pi_{H}$ and $\tilde{R}=X$, probability $\frac{(1-r) \rho}{r(1-p)+(1-r) p}$
+- If they withdraw they get $1-\lambda$, they store it and consume it at $t=2$
+- If they don't withdraw, their expected consumption at $t=2$ is
+$$
+\frac{(1-r) p}{r(1-p)+(1-r) p} X
+$$
+$\bullet \Rightarrow \ln$ states $S_{2}$ and $S_{3}$, consumers withdraw if and only if:
+$$
+\frac{(1-r) p}{r(1-p)+(1-r) p} X<1-\lambda
+$$
+
+- In state $S_{1}\left(\tilde{\pi}=\pi_{L} ; \tilde{R}=X\right)$, only early consumers withdraw $\Rightarrow$ no bank run
+- In state $S_{4}\left(\tilde{\pi}=\pi_{H} ; \tilde{R}=0\right)$, all consumers withdraw $\Rightarrow$ efficient / fundamental bank run
+- In states $S_{2}\left(\tilde{\pi}=\pi_{L} ; \tilde{R}=0\right)$ and $S_{3}\left(\tilde{\pi}=\pi_{H} ; \tilde{R}=X\right)$, all
+consumers withdraw if $\frac{(1-r) p}{r(1-p)+(1-r) p} X<1-\lambda$ $\Rightarrow$ efficient bank run if $S_{2}$ $\Rightarrow$ inefficient bank run if $S_{3}$
+
+
+## Empirical evidence
+
+ Deposit insurance plays a role:
+ 
+- Uninsured depositors are more likely to run
+ Bank-borrower relationships play a role:
+ 
+- Borrowers with a loan are less likely to run
+- Borrowers with longer relationships are less likely to run
+
+# Regulation
+
+Justification:
+
+- Market power concerns
+- Protection of consumers from information asymmetries
+- Externalities
+
+## Customer protection
+
+- Banks are financed by large numbers of small, uninformed, dispersed depositors
+- In their role as delegated monitors, banks finance loans typically characterized by asymmetric information
+- Bank assets are opaque and hard to value for outsiders
+- Bank borrowers are also their customers
+- Protection against discrimination, unfair borrowing costs and hidden fees, etc
+
+## Externalities
+
+- Banks provide services that improve welfare and are useful for economic transactions
+- Deposits allow cross-sectional and inter-temporal transfers of liquidity from patient to impatient consumers
+- Bank monitoring provides access to finance to entrepreneurs with profitable investments
+- Bank loans provide inter-temporal consumption smoothing and cross-sectional transfers of wealth from savers to investors
+- Deposits and payment services provided by banks facilitate economic transactions
+- Banks play an important role in MP transmission
+- Bank failures are costly
+- For borrowers: Loss of information capital
+- For the economy: Important negative real effects
+
+## Why do banks fail?
+
+- inherently unstable and prone to runs
+- high leverage
+- solvency problems if fail in screening and monitoring opaque firms/households
+
+## Taxonomy of banking regulation
+
+Market structure and competition
+
+- Entry restrictions and bank chartering, branching restrictions, restrictions on mergers and $\mathrm{BHC}$, separation of banking and commerce
+Consumer protection
+
+- Ceilings on consumer loan interest rates, truth-in-lending laws, equal credit opportunities, home mortgage disclosure act, regulations on electronic fund transfers
+Credit allocation
+
+- Deposit interest rate ceilings, community reinvestment act
+Monetary control
+
+- Reserve requirements, discount rate
+
+Microprudential regulation
+
+- is aimed at ensuring the soundness of individual institutions by dealing with the problems caused by market failures
+- focuses on the responses of an individual bank to exogenous risks
+- does not internalize consequences of collective individual behavior on the financial suctem
+
+Macroprudential regulation
+
+- Deposit insurance
+- Regulatory monitoring: off-site reviews and on-site inspections
+- Capital requirements
+- Liquidity regulations
+- Bank activity restrictions
+- Limits on bank lending to an individual borrower or sector
+
+## Microprudentail regulation
+
+### Deposit insurance
+
+- if not able to fulfull oblitations, depositors receive compens. fom **deposit insurance system**
+- introduced in 1934 in the US
+- most OECD countries in 1980's
+
+#### Caveats of depo. insurance
+
+- uninsured depositors most likely to run -> insurance help. Only partially tho, large insurance depositors also likely to run
+- leads to **moral hazard** - banks encouraged to finance **high risk, high return** projects
+
+Consider an insured bank with deposits requirement repayment of $B$, and a total value of $\tilde{V}$
+
+- If $\tilde{V} \geq B$ then depositors receive $B$ and shareholders receive $\tilde{V}-B$
+- If $\tilde{V}<B$ the bank fails. Shareholders receive nothing; insurer takes possession of bank assets and pays $B$
+- Thus shareholders receive $\max \{0, \tilde{V}-B\} ;$ depositors receive $B$, and deposit insurer receives $\min \{0, \tilde{V}-B\}$
+- Additional cash inflow of $-\min \{0, \tilde{V}-B\}=\max \{0, B-\tilde{V}\}$ from
+insurer
+- Put option with underlying security $\tilde{V}$ and strike price $B$.
+- The value of the option increases with the volatility of the underlying security and with $\mathrm{B} \Rightarrow$ incentives to increase risk and leverage!
+
+### Capital regulations
+
+Bank capital reduces moral hazard by forcing banks to put "skin in the game" :
+
+- A bank is financed with $k$ units of equity and $1-k$ units of insured deposits
+- The bank has a choice between 2 investment technologies:
+- Good: yields $Y_{G}$ with probability $p_{G}$ and 0 otherwise
+- Bad: yields $Y_{B}$ with probability $p_{B}$ and 0 otherwise
+- Assumption: $p_{B} Y_{B}<p_{G} Y_{G}$
+- Implementing the good investment technology requires additional effort that costs $c$
+- The risk-free rate is normalized to 0
+
+- The good investment technology will be implemented when:
+$$
+p_{G}\left(Y_{G}-(1-k)\right)-c \geq p_{B}\left(Y_{B}-(1-k)\right)
+$$
+- The above incentive condition implies that bank capital should exceed a certain critical level:
+$$
+k \geq k^{*}=1-\left(\frac{p_{G} Y_{G}-p_{B} Y_{B}-c}{p_{G}-p_{B}}\right)
+$$
+$\Rightarrow$ moral hazard incentives are mitigated by higher "skin in the game" (i.e., higher capital)
+
+#### Cap. req. under Basel \linebreak 
+
+
+
+
+Basel I (1987): Bank capital should be no lower than $8 \%$ of banks' risk weighted assets (RWA). Simple weights. Examples: $0 \%$ for government debt, $50 \%$ for residential mortgages and $100 \%$ for private sector debt \linebreak
+
+Basel II (2006): Minimum capital ratio is still of $8 \%$, but two approaches to computation of RWA:
+
+- Standardized approach: weights are defined based on the external ratings provided by rating agencies
+- Internal-ratings-based approach: RWA are defined according a complex formula in which banks are allowed to use their internal estimations of certain parameters \linebreak
+
+Basel III (2011): Improved quantity and quality of capital, enhancing risk coverage (via stressed VaR requirements), introduction of a minimum leverage ratio
+
+Regulatory capital vs. equity capital:
+
+- Tier 1 capital $=$ Common stock, RE, capital surplus, disclosed capital reserves
+- Tier 2 capital $=$ Loan loss provisions, preferred stock, subordinated obligations, undisclosed capital reserves, hybrid capital instruments
+- Regulatory capital $=$ Tier 1 capital $+$ Tier 2 capital
+Criticism of using risk weights:
+- risk weights may distort banks' investment decisions, e.g., towards investment to government bonds or highly rated $\mathrm{ABS}$
+- they may not accurately reflect the riskiness of assets due to strategic manipulations or erroneous assumptions of the internal models used by banks
+$\Rightarrow$ in Basel III, the risk-weighted capital ratio is complemented by a $3 \%$ leverage ratio (Tier 1 capital to total assets)
+- Higher capital requirements are perceived as "costly" by bank shareholders, as they entail an increase in the cost of funding due to
+- underwriting and signaling costs of new equity issuance
+- the loss of tax shields and subsidies associated with debt financing
+- They may also entail social costs, if higher funding costs translate into higher costs of bank loans $\Rightarrow$ reduction in bank lending
+
+### Liquidity regulations
+
+Primary goal: mitigate maturiy mismatch \linebreak
+
+Minimum standards for funding and liquidity under Basel III:
+- Liquidity Coverage Ratio (LCR)
+- Net Stable Funding Ratio (NSFR)
+
+#### Liquidity Coverage Ratio LCR
+
+- The LCR ensures that banks have sufficient high-quality liquid assets (HQLA) to survive a significant stress scenario lasting 30 days
+- The LCR is defined as the stock of HQLA divided by total net cashflows over the 30 calendar days of the stress scenario
+$L C R=\frac{\text { Stock of } \mathrm{HQLA}}{\text { Total net cash outflows over the next } 30 \text { days }} \geq 1$
+- HQLA examples: coins and banknotes, CB reserves, high-quality marketable securities with $0 \%$ risk under Basel II
+- Net outflows set at least as $25 \%$ of gross expected outflows
+- LCR promotes the short-term resilience of the liquidity profile of banks
+
+#### Net Stable Funding Ratio (NSFR)
+
+- The NSFR promotes resilience over a longer horizon (one year) by creating incentives for banks to fund their activities with more stable sources relative to the liquidity of its assets
+- NSFR $=\frac{\text { Available stable funding }}{\text { Required stable funding }} \geq 1$
+- Examples of stable funding: a fraction of retail deposits, long-term wholesale funding
+- Required stable funding calculated as a weighted average of asset classes
+
+## Macroprudential regulation
+
+- Capital conservation buffer (CCoB)
+- Countercyclical capital buffers (CCyB)
+- Forward looking provisioning
+- Higher loss absorbency requirements
+- Time varying loan-to-value ratios
+
+### Capital conservation buffer
+
+- Estimated risks are low during booms $\Rightarrow$ easy to satisfy minimum capital requirements with relatively low capital levels $\Rightarrow$ excess capital $\Rightarrow$ encourages additional lending and economic growth
+- In recessions, estimated risks rise and capital requirements become binding $\Rightarrow$ banks need to raise more capital when it is more costly $\Rightarrow$ banks cut on lending
+- The capital conservation buffer is additional capital formed during normal periods that can be used during times of stress
+- $\mathrm{CCOB}=2.5 \%$ Tier- 1 capital over RWA above the minimum capital requirements
+- Banks restore depleted CCoBs by limiting dividend payments and employee bonus
+
+### Countercyclical capital buffers
+
+- The CCyB is additional capital (above the CCoB) that banks set apart during good times.
+- CCyBs are implemented on a national basis if excess credit growth in a country indicates that systemic risk is piling up
+- CCyBs range from 0 to $2.5 \%$ of total risk-weighted assets (RWA).
+- When the credit-to-GDP ratio is 2 percentage points above its long-term trend, the CCyB is activated.
+- When the credit-to-GDP ratio is 10 percentage points above its long-term trend, the $\mathrm{CCyB}$ is reaches its maximum level of $2.5 \%$.
+- Deviations of the credit-to-GDP ratio from its long-term trends are predictors of system-wide banking distress.
+
+### Forward looking provision
+
+- Under forward-looking provisioning, banks are required to make provisions for loan losses under the expected loss approach, rather than on the current incurred loss approach
+
+### Higher loss absorbency requirements
+
+- Higher loss absorbency requirements focus on the cross-sectional dimension of systemic risk, rather than its time dimension (like $\mathrm{CCyB}$ )
+- Risk can be concentrated on certain sectors of the financial system, for example, in large banks that are "too big to fail" or smaller connected banks that are "too many to fail"
+- Globally systemically important banks (GSIBs) are required to have even larger capital requirements
+- Criteria for GSIBs: size, interconnectedness, complexity, global operations, substitutability of services
+- Depending on their contribution to systemic risks, these requirements range from 1 to $3.5 \%$ of RWAs
+
+### Other under discusssion
+
+Time-varying loan-to-value ratios
+
+- Set by regulators when they suspect asset prices could be forming bubbles that could burst suddenly
+- Idea is to force borrowers to increase their skin in the game and limit risk taking
+Restrictions on executive compensation
+
+- Limit variable pay and facilitate clawbacks, i.e. a bonus given to a bank executive for high earnings during good times can be clawed back during back times
+- Idea: Limit compensation benefits that executives can get from taking too much risk, to limit agency problems
+
+
+## Macro vs. Micro
+
+$$
+\begin{array}{l|l} 
+& \multicolumn{1}{|c} {\text { Microprudential }} \\
+\hline \begin{array}{l}
+\text { Proximate objective } \\
+\text { Ultimate objective }
+\end{array} & \begin{array}{l}
+\text { limit distress of individual institutions } \\
+\text { consumer (investoridepositor) } \\
+\text { protection }
+\end{array} \\
+\begin{array}{l}
+\text { Characterisation of } \\
+\text { Risk }
+\end{array} & \begin{array}{l}
+\text { "exogenous" (independent of } \\
+\text { individual agents' behavior) }
+\end{array} \\
+\hline \begin{array}{l}
+\text { Correlations and } \\
+\text { common exposures } \\
+\text { across instutions }
+\end{array} & \text { Irrelevant } \\
+\hline \begin{array}{l}
+\text { Calibration of } \\
+\text { prudential controls }
+\end{array} & \begin{array}{l}
+\text { in terms of risks of individual } \\
+\text { institutions; bottom-up }
+\end{array} \\
+\hline
+\end{array}
+$$
+
+$$
+\begin{array}{l|l}
+\hline & \multicolumn{1}{|c} {\text { Macroprudential }} \\
+\hline \begin{array}{l}
+\text { Proximate objective } \\
+\text { Ulibmate objective }
+\end{array} & \begin{array}{l}
+\text { limit financial system wide distress } \\
+\text { avoid macroeconomic costs linked to } \\
+\text { financial instability }
+\end{array} \\
+\begin{array}{l|l}
+\text { Characterisation of } \\
+\text { Resk }
+\end{array} & \begin{array}{l}
+\text { "endogenous" (dependent on } \\
+\text { collective behavior) }
+\end{array} \\
+\hline \begin{array}{l}
+\text { Correlations and } \\
+\text { common exposures } \\
+\text { across institutions }
+\end{array} & \text { Important } \\
+\hline \begin{array}{l}
+\text { Calibration of } \\
+\text { prudential controls }
+\end{array} & \begin{array}{l}
+\text { in terms of system-wide risk, top- } \\
+\text { down }
+\end{array} \\
+\hline
+\end{array}
+$$
+
+
+
+
+# Transmission Mechanisms of Monetary Policy
+
+What policy or policies, if any, should be implemented to reduce fluctuations in output, employment, and inflation?
+
+## Central bank mandates
+
+- FED: "The Congress has directed the Fed to conduct the nation's monetary policy to support three specific goals: maximum sustainable employment, stable prices, and moderate long-term interest rates."
+- ECB: "The primary objective of the ECB's monetary policy is to maintain price stability. This is the best contribution monetary policy can make to economic growth and job creation."
+- SNB: "Its primary goal is to ensure price stability, while taking due account of economic developments."
+
+Bottom line: smooth out fluctuations in economic activity and promote sustainable economic growth
+
+## CB's toolkit: Monetary policy
+
+Monetary policy (MP) - the process through which central banks (CBs) controls money supply, which in turn affects interest rates.
+
+### Conventional tools 
+
+Central banks (CBs) exercise MP through:
+
+- open market operations, i.e., selling and buying government securities in the open markets
+- discount window facilities (or standing lending facilities in the Eurozone)
+- minimum reserve requirements, i.e., a proportion of assets that banks must keep at a CB balance sheet
+
+MP can be:
+
+expansionary (e.g. reducing reserve requirements, reducing discount rate, buying government bonds); loose MP
+
+- contractionary (e.g. increasing reserve requirements, increasing discount rate, selling government bonds); tight MP
+
+### Unconventional tools
+
+To deal with the effects of the $2008-2009$ crisis and the current coronavirus crisis, banks around the world have introduced new unconventional monetary policy instruments to enable them pursue their mandates
+
+- lending operations, or direct injection of liquidity to banks (i.e. to bypass impairments in interbank and money markets) by extending maturity of typical lending operations, expanding eligible collateral, etc.
+
+Q asset purchase programs, i.e., large-scale purchase of assets other than Treasury bills (even private assets). Objectives: to lower yields and support asset valuations avoiding fire sales
+
+- forward guidance, or communicating to the market the central banks' intentions with respect to future policy rate settings in order to influence expectations
+- negative interest rate, i.e., lowering the target interest rate below the zero lower bound
+
+## Interest rate channel (s 12)
+
+### Three puzzles
+
+Magnitude puzzle
+
+- Economic activity is strongly affected by monetary policy changes whereas the effect on interest rates is relatively small
+
+Timing puzzle
+
+- Some important components of spending do not react until most of the interest rate effect is past
+
+Composition puzzle
+
+- Monetary policy (with its direct effect on short-term rates) has the most rapid impact on real estate investment, which should be most sensitive to long-term real interest rates
+
+## Credit channel
+
+The criticisms of the interest rate channel lead to a new perspective on the monetary policy transmission by suggesting the existence of a credit channel
+The credit view proposes that monetary policy transmission arise as a result of financial frictions in credit markets
+
+- MP: Interest rate $\uparrow \Rightarrow$ Debt interest payments $\uparrow \Rightarrow$ net worth $\downarrow \Rightarrow$ agency problems and moral hazard $\uparrow \Rightarrow$ the external finance premium $\uparrow \Rightarrow$ ability to borrow is impaired $\Rightarrow$ investment $\downarrow$
+- MP: Bank reserves $\downarrow \Rightarrow$ bank deposits $\downarrow \Rightarrow$ bank loans $\downarrow \Rightarrow$ bank monitoring $\downarrow \Rightarrow$ ability to borrow of opaque firms is impaired $\Rightarrow$ investment $\downarrow$
+
+## Balance sheet channel
+
+- Entrepreneurs (borrowers) have private information about the quality of their project
+- Information asymmetry between borrowers and lenders creates an agency problem, which raises repayment rate
+- The agency problem increases when entrepreneurs' net worth decreases
+- Entrepreneurs' net worth $\downarrow \Rightarrow$ cost of borrowing $\uparrow \stackrel{\circ} \Rightarrow$ investment $\downarrow$
+
+### First best allocation
+
+Under full information, only projects with a positive net present value are financed. Entrepreneurs' net worth does not matter for borrowing/investment choices and output in the economy.
+
+### Second best allocation
+
+- Participation Constraint of Entrepreneurs: Cutoff probability $\hat{p}(w)$ above which the entrepreneur will implement the project is now determined by
+$$
+\underbrace{(Y-R(w)) \hat{p}(w)}_{\begin{array}{c}
+\text { Expected return } \\
+\text { on risky investment }
+\end{array}}=\underbrace{w r}_{\begin{array}{c}
+\text { Return on } \\
+\text { risk free asset }
+\end{array}}
+$$
+- Zero Profit Condition for Investors:
+$$
+\underbrace{A[\hat{p}(w)] R(w)}_{\text {Expected return }}=\underbrace{(1-w) r}_{\text {Opportunity cost }}
+$$
+on loan of loan
+where $A[\hat{p}(w)]=\mathbb{E}[p \mid p \geq \hat{p}(w)]=\frac{\int_{\rho(w)}^{1} p h(p) d p}{\int_{\tilde{P}(w)}^{1} h(p) d p}$ is the condition
+expectation of the success probability which is increasing in $\hat{p}(w)$
+
+- Therefore, we have:
+$$
+\left\{\begin{array}{c}
+(Y-R(w)) \hat{p}(w)=w r \\
+A[\hat{p}(w)] R(w)=(1-w) r
+\end{array}\right.
+$$
+- Summing up the two equations yields:
+$$
+\begin{array}{c}
+\hat{p}(w) Y=r-R(w) \underbrace{(A[\hat{p}(w)]-\hat{p}(w))}_{>0} \\
+\Rightarrow \hat{p}(w)=\frac{r}{Y}-\frac{R(w)(A[\hat{p}(w)]-\hat{p}(w))}{Y}<\frac{r}{Y} \equiv p^{*}
+\end{array}
+$$
+$\Rightarrow$ Financing some projects with negative NPV (excessive risk-taking)
+
+- When $p$ is not observable to banks, $R$ is replaced by its average for a given level of $w \Rightarrow$ this implies taxing safer projects and subsidizing riskier ones (cross-subsidization)
+- Result: Cutoff probability $\hat{p}(w)$ is increasing in $w:$ entrepreneurs with lower net worth take more risk $\Rightarrow$ the pool of loans worsens, some negative NPV projects are implemented
+- The lower is an entrepreneur's net worth $w$ (equivalently, the higher is leverage), the more an entrepreneur benefits from cross-subsidization $\Rightarrow$ the stronger are incentives for excessive risk-taking
+
+### External finance premium
+
+External finance premium - a wedge between the cost of funds raised externally (e.g., by issuing equity or debt) and the opportunity cost of internally generated funds (e.g., retained earnings)
+- External finance premium:
+$$
+\delta(w) \equiv \frac{R(w)}{1-w}-r
+$$
+
+- Using investors' zero profit condition (4) to replace $\frac{R(w)}{1-w}$ yields:
+$$
+\delta(w)=\frac{r}{A(\hat{p}(w))}-r
+$$
+- Since $\hat{p}(w)$ is increasing in $w$ and $A(\hat{p}(w))$ is increasing in $\hat{p}(w)$, $\delta(w)$ is a decreasing function of $w$
+$\Rightarrow$ Entrepreneurs with lower net worth (self-financing capacity) face higher external financing costs
+
+### Incentives to screen
+
+- The expected value of screening:
+$$
+\underbrace{w r \int_{0}^{\hat{p}(w)} h(p) d p}_{\text {investment in risk free asset }}+\underbrace{\int_{\hat{\rho}(w)}^{1} p(Y-R(w)) h(p) d p}_{\text {investment in risky project }}
+$$
+- If the entrepreneur does not screen, his profit is $r w$ for sure (net worth is invested in the risk free asset)
+
+The consequences of information asymmetries between borrowers and lenders are as follows:
+Entrepreneurs take too much risk:
+$$
+\hat{p}(w) \leq p^{*}=\frac{r}{Y}
+$$
+Entrepreneurs with lower net worth (self-financing capacity) face higher costs of loans
+There exists a critical value $w_{C}$ of net worth (self-financing capacity), such that entrepreneurs with $w<w_{C}$ are discouraged to undertake investment projects
+
+### Macroeconomic implications
+
+- Global performance of the economy does not only depend on the fundamentals $\left(p^{*}, Y, C\right)$, but also on the strength of firms' balance sheets $(w)$
+- Financial fragility: Changes in the wealth of entrepreneurs (e.g. due to a shock in the distribution of $w$ leading many entrepreneurs to have wealth below $w_{C}$ ) may lead to a drop in investment and output, even when fundamentals are good.
+- Financial accelerator: The asset values of entrepreneurs is procyclical. Worsening of financial conditions increases the cost of capital, so value of investments fall.
+
+## Collateral channel
+
+- The collateral channel can amplify the transmission of shocks when firms face credit constraints
+- Economic shock $\Rightarrow$ net worth of firms $\downarrow \Rightarrow$ ability to borrow is impaired $\Rightarrow$ investment falls
+- Economic shock $\Rightarrow$ asset prices $\downarrow \Rightarrow$ the value of collateral $\downarrow \Rightarrow$ ability to borrow is impaired $\Rightarrow$ investment falls
+- Feedback effect: the price of collateral determines the borrowing capacity of firms, but the firms' borrowing capacity itself affects the price of collateral
+- Through this channel, a small shock can generate large, persistent fluctuations in output and asset prices
+
+## Bank lending channel and MP transmission
+
+- Mechanism: MP affects the supply of bank deposits, which in turn affects the supply of bank loans
+
+Two conditions must hold:
+
+- Banks have to react to reduction in deposits by cutting down their lending instead of substituting an outflow of deposits by alternative sources of funds
+- Bank loans and market finance have to be imperfect substitutes
+
+The effectiveness of the bank lending channel depends on bank-specific conditions (e.g. capital, business model)
+
+- e.g., bank loans is a key source of external financing for SMEs in Europe but not in U.S.
+- Bank-dependent economies are more vulnerable to banking crises
+
+# Real effects on Financial intermediation
+
+What is the main driver of business cycle?
+
+Two competing views:
+
+- The real business cycle (RBC) view
+- The credit view
+
+In Real Business Cycle (RBC) models:
+
+- Business cycles are mainly caused by exogenous productivity shocks
+- Financial markets are efficient
+$\Rightarrow$ The financial structure of firms does not matter (Modigliani-Miller Theorem, 1958 )
+$\Rightarrow$ Bank credit does not matter
+
+- Expansions (recessions) are triggered by positive (negative) productivity shocks
+- if productivity falls, returns to labor decline, so workers and firms choose to work less and take more leisure.
+$\Rightarrow$ Business cycles are the efficient response of the economy to changes in the production technology
+- No role for banks and finance. Not an issue as long as the financial sector remained reasonably stable.
+- Modern RBC models add other elements to capture key elements of financial crisis
+
+Business cycles are driven by credit cycles
+
+- Expansion periods are due to increase in the supply of credit
+- Financial innovation (e.g. securitization of mortgages)
+- State interventions (e.g. implicit government guarantees or credit subsidies)
+- Changes in the cost of funds of financial intermediaries
+- Increase in credit supply can lead to excess leverage and financial fragility $\Rightarrow$ reversals
+- The financial structure of banks and firms matters
+- Financial frictions can amplify cycles
+
+Fisher (1933) attributes the severity of the Great Depression in the
+U.S. to heavy debt burden and the debt deflation mechanism
+
+- Debt contracts that are not linked to inflation $+$ deflation lead to a redistribution of wealth from borrowers to creditors
+- Reduction in firms' cash flows and fall in collateral values increases leverage and reduces investment, exacerbating the recession
+
+
+## Bank lending channel: Empirical implications
+
+(1) Asymmetric information implies shocks to bank capital reduce the available loans to the most opaque firms (small, young); "flight to quality".
+(2) Shocks to bank capital (in particular, shocks to MP) lead to lower supply of loans, but should not necessarily affect the demand for credit.
+(3) Shocks to the banking sector should lead to lower lending by banks with worse balance sheet conditions.
