@@ -1596,15 +1596,18 @@ $\Rightarrow$ Bank credit does not matter
 - if productivity falls, returns to labor decline, so workers and firms choose to work less and take more leisure.
 $\Rightarrow$ Business cycles are the efficient response of the economy to changes in the production technology
 - No role for banks and finance. Not an issue as long as the financial sector remained reasonably stable.
-- Modern RBC models add other elements to capture key elements of financial crisis
 
-Business cycles are driven by credit cycles
 
-- Expansion periods are due to increase in the supply of credit
+### Business cycles are driven by credit cycles
+
+ Expansion periods are due to increase in the supply of credit
+ 
 - Financial innovation (e.g. securitization of mortgages)
 - State interventions (e.g. implicit government guarantees or credit subsidies)
 - Changes in the cost of funds of financial intermediaries
-- Increase in credit supply can lead to excess leverage and financial fragility $\Rightarrow$ reversals
+
+Increase in credit supply can lead to excess leverage and financial fragility $\Rightarrow$ reversals
+
 - The financial structure of banks and firms matters
 - Financial frictions can amplify cycles
 
@@ -1612,11 +1615,77 @@ Fisher (1933) attributes the severity of the Great Depression in the
 U.S. to heavy debt burden and the debt deflation mechanism
 
 - Debt contracts that are not linked to inflation $+$ deflation lead to a redistribution of wealth from borrowers to creditors
-- Reduction in firms' cash flows and fall in collateral values increases leverage and reduces investment, exacerbating the recession
+- **Reduction in firms' cash flows and fall in collateral values increases leverage and reduces investment, exacerbating the recession**
 
+## Balance sheet channel: what was implied by theory
 
-## Bank lending channel: Empirical implications
+In the presence of asymmetric information, the demand for loans (and investment) should depend on firm balance sheet conditions
+
+- Changes in balance sheet conditions of firms should especially affect demand for loans of opaque firms (small, young firms)
+- If interest rate $\uparrow \Rightarrow$ leveraged firm cash flows $\downarrow \Rightarrow$ firm balance sheet worsens $\Rightarrow$ investment $\downarrow .$ With asymmetric information, investment $\downarrow$ more for opaque (small) firms.
+
+Cost of capital is higher for firms with weak balance sheets
+
+- The borrowing costs for non-financial firms should rise during recessions, when balance sheets worsen.
+
+## Balance sheet channel: evidence
+
+- firms' coverage ratio is highly correlated with the federal funds rate
+- inventory inves., sales and ST debt of small firms are more reponsive to changes in MP than large firms $\Rightarrow$ **asymetric information and net worth plays a role in BC**
+- difference between the yield on onfinancial corporate bonds and Treasuries rises in recessions (cost of capital is high when BS is weak) $\Rightarrow$ frictions matter for business cycles, Fin structure matter
+- when FED increases rate, loan growth is lower for subsidiary banks operating in states that are in a recession
+
+## Bank lending channel: what was implied by theory
+
 
 (1) Asymmetric information implies shocks to bank capital reduce the available loans to the most opaque firms (small, young); "flight to quality".
 (2) Shocks to bank capital (in particular, shocks to MP) lead to lower supply of loans, but should not necessarily affect the demand for credit.
 (3) Shocks to the banking sector should lead to lower lending by banks with worse balance sheet conditions.
+
+
+## Bank lending channel: evidence
+
+- small firms financing is more affected by restrictive MP, consistent with bank-lending channel
+- restrictive monetary policy is followed by a raise in commercial paper issuance and decline in bank loans, suggesting that demand for credit is high
+- monetary tightening reduces lending by banks that hold less liquid assets
+- loan growth of small banks affilied with multi-bank holdings is less sensitive to changes in the FED rate than unaffiliated banks
+
+### Ongena finding controlling for supply
+
+- higher short-term rates and lower GDP reduce the probability that a loan is granted
+
+## Real effects of the Credit Channel
+
+- when bank credit supply is compressed, firms switch from loans to bonds
+- during fin. crisis, firms with large pre-crisis cash holdings maintain investment levels
+- during crisis, firms compensated the loss of bank credit by borrwin from suppliers
+- shocks to the supply of credit (recessions) are correlated with changes in ROI
+
+### Credit frictions
+
+#### US construction
+
+- declines in risk-based capital ratios reduces real estate lending, subsequent impact on construction activity
+
+#### Fixed assets
+
+- firms whose debt was maturing in the beginning of the crises could their investment to capital ratio, because they had to refinance their debt at a higher price (coz of the crisis)
+
+#### Collateral channel
+
+- investment is sensitive to the value of real estate (collateral)
+- .06$ for every dollar in value of collateral
+
+#### Firm sales: client demand
+
+- if clients are highly leveraged and interest rates rise, firms sell less
+- Mechanism: Interest rate $\uparrow \Rightarrow$ Highly levered clients' interest expenses $\uparrow \Rightarrow$ Highly levered clients' cash flows $\downarrow \Rightarrow$ Levered clients' purchases of inputs $\downarrow \Rightarrow$ Supplier sales $\downarrow$
+
+#### Unemployment
+
+- firms who had relationship with less healthy lenders had harder time obtaining a loan, reducing employment more (small and medium firms)
+
+#### Recessions
+
+- reduction in supply of bank loans can lead to a recession
+
